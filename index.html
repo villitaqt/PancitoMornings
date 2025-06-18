@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="style.css">
     <!-- Enlace a Google Fonts para las tipografías -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <!-- Enlace a Material Symbols Outlined (CDN) -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 </head>
 <body>
 
@@ -18,6 +20,7 @@
                 <ul>
                     <li><a href="#inicio">Inicio</a></li>
                     <li><a href="#solucion">Solución</a></li>
+                    <li><a href="#visuales-app">Tu App</a></li>
                     <li><a href="#beneficios">Beneficios</a></li>
                     <li><a href="#testimonios">Testimonios</a></li>
                     <li><a href="#contacto">Contacto</a></li>
@@ -32,11 +35,10 @@
         <section class="hero-section" id="inicio">
             <div class="hero-video-background">
                 <video autoplay loop muted playsinline>
-                    <!-- Puedes reemplazar esta URL con tu video final. Asegúrate de que sea compatible con web (MP4) -->
                     <source src="https://videos.pexels.com/video-files/4109585/4109585-hd_1920_1080_25fps.mp4" type="video/mp4">
                     Tu navegador no soporta el tag de video.
                 </video>
-                <div class="video-overlay"></div> <!-- Capa para oscurecer el video y mejorar la lectura del texto -->
+                <div class="video-overlay"></div>
             </div>
 
             <div class="container hero-content-container">
@@ -49,7 +51,6 @@
                         <a href="#" class="btn secondary">Descarga la App</a>
                     </div>
                 </div>
-                <!-- La imagen de hero ha sido reemplazada por el video de fondo -->
             </div>
         </section>
 
@@ -64,9 +65,39 @@
                     <h2>Pancito Mornings: Tu solución para un despertar perfecto.</h2>
                     <p>Con nuestra app, no tienes que sacrificar tu comodidad por un desayuno delicioso. Te conectamos con las mejores panaderías y proveedores para que recibas, a la hora que elijas, no solo pan calentito, sino un desayuno completo y delicioso: leche, huevos, embutidos, frutas y todo lo que necesitas. Es simple, es cómodo, es tu desayuno ideal entregado a domicilio.</p>
                     <div class="app-screenshot">
-                        <!-- Imagen/Screenshot de la interfaz de la app (Lazy Load) -->
-                        <img class="lazy-load" data-src="https://images.unsplash.com/photo-1614002772590-b1848a6df24c?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Screenshot de la app Pancito Mornings">
+                        <img class="lazy-load" data-src="https://res.cloudinary.com/duegk80qd/image/upload/v1750284555/home_j6pybj.png" alt="Screenshot de la app Pancito Mornings">
                     </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Nueva Sección de Visuales de la Aplicación -->
+        <section class="app-visuals-section" id="visuales-app">
+            <div class="container">
+                <h2>Mira cómo Pancito Mornings transforma tus mañanas.</h2>
+                <p class="section-description">Descubre la facilidad de pedir tu desayuno ideal y el pan más fresco con un solo toque. Así de simple es tener más tiempo para ti.</p>
+
+                <div class="app-screenshots-static-grid">
+                    <div class="app-screenshot-item">
+                        <img class="lazy-load" data-src="https://res.cloudinary.com/duegk80qd/image/upload/v1750286534/detail_d5sh2e.png" alt="Captura de Pantalla de la App 1">
+                        <p>Visualiza la tienda y tus productos favoritos.</p>
+                    </div>
+                    <div class="app-screenshot-item">
+                        <img class="lazy-load" data-src="https://res.cloudinary.com/duegk80qd/image/upload/v1750286557/map_pz9xwh.png" alt="Captura de Pantalla de la App 2">
+                        <p>Selecciona tu dirección en el mapa.</p>
+                    </div>
+                    <div class="app-screenshot-item">
+                        <img class="lazy-load" data-src="https://res.cloudinary.com/duegk80qd/image/upload/v1750286550/cal_kumcyc.png" alt="Captura de Pantalla de la App 3">
+                        <p>Programa entregas recurrentes con el calendario.</p>
+                    </div>
+                </div>
+
+                <div class="app-video-walkthrough">
+                    <h3>Recorrido Completo: Así de Fácil es Disfrutar tu Mañana.</h3>
+                    <video class="lazy-load" controls preload="none" poster="https://via.placeholder.com/800x450/B0E0E6/333333?text=Video+Recorrido+App+Pancito">
+                        <source data-src="https://res.cloudinary.com/duegk80qd/video/upload/video_ouszqy.mp4?_s=vp-2.5.0" type="video/mp4">
+                        Tu navegador no soporta el video.
+                    </video>
                 </div>
             </div>
         </section>
@@ -74,30 +105,40 @@
         <!-- Sección Beneficios -->
         <section class="benefits-section" id="beneficios">
             <div class="container">
-                <h2>Desperta a la Comodidad Total con Pancito Mornings.</h2>
+                <h2>Despierta a la Comodidad Total con Pancito Mornings.</h2>
                 <div class="benefits-grid">
                     <div class="benefit-item">
-                        <img class="lazy-load" data-src="https://via.placeholder.com/60/FFDDC1?text=%F0%9F%9A%9A" alt="Icono de Casa/Delivery">
+                        <span class="material-symbols-outlined">
+                            local_shipping
+                        </span>
                         <h3>Conveniencia sin Igual</h3>
                         <p>Recibe tu desayuno completo y pan fresco directamente en la puerta de tu casa. ¡Cero filas, cero salidas, cero preocupaciones matutinas!</p>
                     </div>
                     <div class="benefit-item">
-                        <img class="lazy-load" data-src="https://via.placeholder.com/60/FFDDC1?text=%F0%9F%A5%96" alt="Icono de Pan">
+                        <span class="material-symbols-outlined">
+                            bakery_dining
+                        </span>
                         <h3>Frescura y Sabor Garantizados</h3>
                         <p>Disfruta de pan recién horneado y productos frescos de la mejor calidad. ¡Sabor que te despierta!</p>
                     </div>
                     <div class="benefit-item">
-                        <img class="lazy-load" data-src="https://via.placeholder.com/60/FFDDC1?text=%E2%8F%B0" alt="Icono de Reloj">
+                        <span class="material-symbols-outlined">
+                            schedule
+                        </span>
                         <h3>Ahorra Tiempo Valioso</h3>
                         <p>Libera esas preciosas mañanas. Más tiempo para ti, tu familia o simplemente para disfrutar de un café y tu desayuno en paz.</p>
                     </div>
                     <div class="benefit-item">
-                        <img class="lazy-load" data-src="https://via.placeholder.com/60/FFDDC1?text=%F0%9F%93%85" alt="Icono de Calendario">
+                        <span class="material-symbols-outlined">
+                            calendar_month
+                        </span>
                         <h3>Entregas 100% a Tu Medida</h3>
                         <p>Programa tus entregas para el día y la hora exacta que mejor se adapte a tu rutina. ¡Tu desayuno, a tu manera!</p>
                     </div>
                     <div class="benefit-item">
-                        <img class="lazy-load" data-src="https://via.placeholder.com/60/FFDDC1?text=%F0%9F%8E%81" alt="Icono de Regalo">
+                        <span class="material-symbols-outlined">
+                            featured_seasonal_and_gifts
+                        </span>
                         <h3>Ofertas Exclusivas (Suscripción)</h3>
                         <p>Accede a descuentos especiales y promociones únicas al elegir nuestros planes de suscripción. ¡La comodidad que te premia cada día!</p>
                     </div>
@@ -111,17 +152,17 @@
                 <h2>Lo que dicen nuestros usuarios</h2>
                 <div class="testimonials-grid">
                     <div class="testimonial-item">
-                        <img class="lazy-load avatar" data-src="https://images.unsplash.com/photo-1573496359142-b8d8773400a4?q=80&w=1780&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Foto de Usuario María">
+                        <img class="lazy-load avatar" data-src="https://instasize.com/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fmunkee%2Fimage%2Fupload%2Fw_1000%2Cc_fill%2Car_1%3A1%2Cg_auto%2Cr_max%2Fv1682717822%2Finstasize-website%2Flearn%2Ftumblr-profile.webp&w=828&q=75" alt="[Image of user Maria]">
                         <p class="quote">"¡Pancito Mornings me cambió las mañanas! Ahora puedo desayunar tranquilamente sin preocuparme por salir."</p>
                         <p class="author">María G. - Cliente Feliz</p>
                     </div>
                     <div class="testimonial-item">
-                        <img class="lazy-load avatar" data-src="https://images.unsplash.com/photo-1560250097-f0c97801a24d?q=80&w=1964&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Foto de Usuario Carlos">
+                        <img class="lazy-load avatar" data-src="https://img.freepik.com/foto-gratis/chico-guapo-joven-sonriente-camisa-verde-mostrando-pulgares-arriba_141793-120967.jpg?semt=ais_hybrid&w=740" alt="[Image of user Carlos]">
                         <p class="quote">"Es increíble la comodidad de recibir el pan fresco en casa. ¡Recomendado 100% para los que odian las prisas!"</p>
                         <p class="author">Carlos R. - Siempre a Tiempo</p>
                     </div>
                     <div class="testimonial-item">
-                        <img class="lazy-load avatar" data-src="https://images.unsplash.com/photo-1494790108377-be9c29b29329?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Foto de Usuario Sofía">
+                        <img class="lazy-load avatar" data-src="https://img.freepik.com/foto-gratis/primer-plano-joven-profesional-haciendo-contacto-visual-contra-fondo-color_662251-651.jpg?semt=ais_hybrid&w=740" alt="[Image of user Sofia]">
                         <p class="quote">"Mi suscripción es mi salvación. Siempre tengo el pan fresco y me olvido de una preocupación diaria."</p>
                         <p class="author">Sofía L. - Suscriptora</p>
                     </div>

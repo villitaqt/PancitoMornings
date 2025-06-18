@@ -259,12 +259,6 @@ a {
     flex-wrap: wrap;
 }
 
-/* Las imágenes hero ya no existen, por lo que estas reglas ya no aplican */
-/* .hero-image { flex: 1; display: flex; justify-content: center; min-width: 350px; } */
-/* .hero-image img { max-width: 100%; height: auto; border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); opacity: 0; transition: opacity 1s ease-in-out; } */
-/* .hero-image img.loaded { opacity: 1; } */
-
-
 /* Problem-Solution Section */
 .problem-solution-section {
     padding: 80px 0;
@@ -313,6 +307,86 @@ a {
 .app-screenshot img.loaded {
     opacity: 1;
 }
+
+/* Nueva Sección: Visuales de la Aplicación */
+.app-visuals-section {
+    padding: 80px 0;
+    background-color: var(--accent-bg); /* Fondo similar al hero para coherencia */
+    text-align: center;
+}
+
+.app-visuals-section .section-description {
+    max-width: 700px;
+    margin: 0 auto 50px auto;
+    color: var(--text-light);
+    font-size: 1.1em;
+}
+
+.app-screenshots-static-grid {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Alinea al inicio si las imágenes tienen diferentes alturas */
+    gap: 40px;
+    flex-wrap: wrap;
+    margin-bottom: 50px; /* Espacio entre las capturas y el video */
+}
+
+.app-screenshot-item {
+    padding: 20px;
+    background-color: var(--white);
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    max-width: 320px; /* Ancho máximo para cada captura */
+}
+
+.app-screenshot-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    opacity: 0; /* Oculto inicialmente para fade-in */
+    transition: opacity 1s ease-in-out;
+}
+.app-screenshot-item img.loaded {
+    opacity: 1;
+}
+
+.app-screenshot-item p {
+    font-size: 1em;
+    color: var(--text-light);
+    margin-bottom: 0;
+}
+
+/* Video de recorrido de la app */
+.app-video-walkthrough {
+    margin-top: 50px;
+    text-align: center;
+}
+
+.app-video-walkthrough h3 {
+    font-size: 2em;
+    margin-bottom: 25px;
+    color: var(--text-dark);
+}
+
+.app-video-walkthrough video {
+    max-width: 900px; /* Ancho máximo del video */
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    opacity: 0; /* Oculto inicialmente para fade-in */
+    transition: opacity 1s ease-in-out;
+}
+.app-video-walkthrough video.loaded {
+    opacity: 1;
+}
+
 
 /* Benefits Section */
 .benefits-section {
@@ -567,6 +641,19 @@ footer .footer-nav ul li a:hover {
         text-align: center; /* Centra los párrafos del problema/solución en móvil */
     }
 
+    .app-screenshots-static-grid { /* Ajuste para móviles */
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .app-screenshot-item {
+        max-width: 80%; /* Más ancho en móvil */
+    }
+
+    .app-video-walkthrough video {
+        max-width: 100%; /* Asegura que el video ocupe todo el ancho disponible en móvil */
+    }
+
     .benefits-grid {
         grid-template-columns: 1fr; /* Una columna en móvil */
     }
@@ -597,8 +684,11 @@ footer .footer-nav ul li a:hover {
     h2 {
         font-size: 1.8em;
     }
-    .hero-section, .problem-solution-section, .benefits-section, .final-cta-section, .testimonials-section {
+    .hero-section, .problem-solution-section, .benefits-section, .final-cta-section, .testimonials-section, .app-visuals-section {
         padding: 60px 0;
+    }
+    .app-video-walkthrough h3 {
+        font-size: 1.5em;
     }
 }
 
