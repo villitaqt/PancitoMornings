@@ -28,22 +28,28 @@
     </header>
 
     <main>
-        <!-- Sección Principal / Hero -->
+        <!-- Sección Principal / Hero con Video de Fondo -->
         <section class="hero-section" id="inicio">
-            <div class="container">
+            <div class="hero-video-background">
+                <video autoplay loop muted playsinline>
+                    <!-- Puedes reemplazar esta URL con tu video final. Asegúrate de que sea compatible con web (MP4) -->
+                    <source src="https://videos.pexels.com/video-files/4109585/4109585-hd_1920_1080_25fps.mp4" type="video/mp4">
+                    Tu navegador no soporta el tag de video.
+                </video>
+                <div class="video-overlay"></div> <!-- Capa para oscurecer el video y mejorar la lectura del texto -->
+            </div>
+
+            <div class="container hero-content-container">
                 <div class="hero-content">
                     <p class="tagline">¡NOVEDAD!</p>
-                    <h1>¿Cansado de Madrugar por el Pan Fresco? <br>¡Recibe la Delicia de tu Panadería Favorita Directo en tu Puerta!</h1>
-                    <p>Olvídate de las filas y el frío. Con nuestra app, disfruta cada mañana de pan recién horneado, leche fresca y todo lo que necesitas para un desayuno perfecto, ¡entregado a la hora que elijas!</p>
+                    <h1>¿Cansado de Madrugar? Desayunos Perfectos y Pan Fresco te Esperan en Casa.</h1>
+                    <p>Desde el aroma inconfundible del pan recién horneado, hasta un desayuno completo y delicioso. Pancito Mornings te lo lleva todo, para que empieces tu día sin prisas y con el mejor sabor.</p>
                     <div class="hero-buttons">
                         <a href="#" class="btn primary">¡Haz tus Mañanas Más Dulces!</a>
                         <a href="#" class="btn secondary">Descarga la App</a>
                     </div>
                 </div>
-                <div class="hero-image">
-                    <!-- Imagen de una persona disfrutando un desayuno tranquilo en casa (Lazy Load) -->
-                    <img class="lazy-load" data-src="https://images.unsplash.com/photo-1568254183919-78a4f43a2877?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Desayuno tranquilo con Pancito Mornings">
-                </div>
+                <!-- La imagen de hero ha sido reemplazada por el video de fondo -->
             </div>
         </section>
 
@@ -51,12 +57,12 @@
         <section class="problem-solution-section" id="solucion">
             <div class="container">
                 <div class="content-block">
-                    <h2>¿Madrugar por el pan? ¡No más!</h2>
-                    <p>Esa alarma que suena demasiado temprano, la necesidad de salir al frío o la lluvia, el apuro por llegar a la panadería y las molestas filas... ¡Nadie quiere empezar su día así! Entendemos que tu tiempo es valioso y que cada mañana merece comenzar con tranquilidad y el aroma inconfundible del pan fresco.</p>
+                    <h2>¿Madrugar para el pan o preparar el desayuno? ¡No más!</h2>
+                    <p>Esa alarma que suena demasiado temprano... no solo es la carrera a la panadería, es el tiempo que no tienes para preparar un desayuno completo. ¡Sabemos que la vida moderna es así y entendemos tu prisa!</p>
                 </div>
                 <div class="content-block">
                     <h2>Pancito Mornings: Tu solución para un despertar perfecto.</h2>
-                    <p>Con nuestra app, no tienes que sacrificar tu comodidad por el pan fresco. Te conectamos con las mejores panaderías de tu zona para que recibas, a la hora exacta que elijas, todo lo que necesitas para un desayuno perfecto. **Es simple, es cómodo, es Pancito Mornings.**</p>
+                    <p>Con nuestra app, no tienes que sacrificar tu comodidad por un desayuno delicioso. Te conectamos con las mejores panaderías y proveedores para que recibas, a la hora que elijas, no solo pan calentito, sino un desayuno completo y delicioso: leche, huevos, embutidos, frutas y todo lo que necesitas. Es simple, es cómodo, es tu desayuno ideal entregado a domicilio.</p>
                     <div class="app-screenshot">
                         <!-- Imagen/Screenshot de la interfaz de la app (Lazy Load) -->
                         <img class="lazy-load" data-src="https://images.unsplash.com/photo-1614002772590-b1848a6df24c?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Screenshot de la app Pancito Mornings">
@@ -68,27 +74,27 @@
         <!-- Sección Beneficios -->
         <section class="benefits-section" id="beneficios">
             <div class="container">
-                <h2>Despierta a la Comodidad Total con Pancito Mornings.</h2>
+                <h2>Desperta a la Comodidad Total con Pancito Mornings.</h2>
                 <div class="benefits-grid">
                     <div class="benefit-item">
                         <img class="lazy-load" data-src="https://via.placeholder.com/60/FFDDC1?text=%F0%9F%9A%9A" alt="Icono de Casa/Delivery">
                         <h3>Conveniencia sin Igual</h3>
-                        <p>Recibe tu pedido directamente en la puerta de tu casa. ¡Cero filas, cero salidas innecesarias, cero preocupaciones matutinas!</p>
+                        <p>Recibe tu desayuno completo y pan fresco directamente en la puerta de tu casa. ¡Cero filas, cero salidas, cero preocupaciones matutinas!</p>
                     </div>
                     <div class="benefit-item">
                         <img class="lazy-load" data-src="https://via.placeholder.com/60/FFDDC1?text=%F0%9F%A5%96" alt="Icono de Pan">
-                        <h3>Frescura Garantizada</h3>
-                        <p>Disfruta de pan y productos horneados el mismo día, directamente de tus panaderías locales favoritas.</p>
+                        <h3>Frescura y Sabor Garantizados</h3>
+                        <p>Disfruta de pan recién horneado y productos frescos de la mejor calidad. ¡Sabor que te despierta!</p>
                     </div>
                     <div class="benefit-item">
                         <img class="lazy-load" data-src="https://via.placeholder.com/60/FFDDC1?text=%E2%8F%B0" alt="Icono de Reloj">
                         <h3>Ahorra Tiempo Valioso</h3>
-                        <p>Libera esas preciosas mañanas. Más tiempo para ti, tu familia o simplemente para disfrutar de un café en paz.</p>
+                        <p>Libera esas preciosas mañanas. Más tiempo para ti, tu familia o simplemente para disfrutar de un café y tu desayuno en paz.</p>
                     </div>
                     <div class="benefit-item">
                         <img class="lazy-load" data-src="https://via.placeholder.com/60/FFDDC1?text=%F0%9F%93%85" alt="Icono de Calendario">
                         <h3>Entregas 100% a Tu Medida</h3>
-                        <p>Programa tus entregas para el día y la hora exacta que mejor se adapte a tu rutina. ¡Tú tienes el control total!</p>
+                        <p>Programa tus entregas para el día y la hora exacta que mejor se adapte a tu rutina. ¡Tu desayuno, a tu manera!</p>
                     </div>
                     <div class="benefit-item">
                         <img class="lazy-load" data-src="https://via.placeholder.com/60/FFDDC1?text=%F0%9F%8E%81" alt="Icono de Regalo">
@@ -126,13 +132,13 @@
         <!-- Sección CTA Final -->
         <section class="final-cta-section">
             <div class="container">
-                <h2>¡Empieza a disfrutar de Pancito Mornings hoy mismo!</h2>
-                <p>Recibe pan fresco y delicioso directamente en tu puerta cada mañana. ¡Despierta con el mejor sabor!</p>
+                <h2>¡Transforma tus mañanas con Pancito Mornings!</h2>
+                <p>Desayunos completos y pan fresco te esperan en tu puerta. ¡Despierta con el mejor sabor y sin prisas!</p>
                 <a href="#" class="btn primary">¡Sí, Quiero Mañanas Más Cómodas!</a>
                 <p class="download-text">Descarga la app hoy y comienza a disfrutar.</p>
                 <div class="app-stores">
-                    <a href="#"><img class="lazy-load" data-src="https://via.placeholder.com/120x40?text=App+Store" alt="Descargar en App Store"></a>
-                    <a href="#"><img class="lazy-load" data-src="https://via.placeholder.com/120x40?text=Google+Play" alt="Descargar en Google Play"></a>
+                    <a href="#"><img class="lazy-load" data-src="https://via.placeholder.com/120x40?text=App+Store" alt="[Image of App Store download button]"></a>
+                    <a href="#"><img class="lazy-load" data-src="https://via.placeholder.com/120x40?text=Google+Play" alt="[Image of Google Play download button]"></a>
                 </div>
             </div>
         </section>
@@ -151,9 +157,9 @@
                 </ul>
             </nav>
             <div class="social-icons">
-                <a href="#"><img class="lazy-load" data-src="https://via.placeholder.com/24/FFFFFF?text=FB" alt="Facebook"></a>
-                <a href="#"><img class="lazy-load" data-src="https://via.placeholder.com/24/FFFFFF?text=TW" alt="Twitter"></a>
-                <a href="#"><img class="lazy-load" data-src="https://via.placeholder.com/24/FFFFFF?text=IG" alt="Instagram"></a>
+                <a href="#"><img class="lazy-load" data-src="https://via.placeholder.com/24/FFFFFF?text=FB" alt="[Image of Facebook icon]"></a>
+                <a href="#"><img class="lazy-load" data-src="https://via.placeholder.com/24/FFFFFF?text=TW" alt="[Image of Twitter icon]"></a>
+                <a href="#"><img class="lazy-load" data-src="https://via.placeholder.com/24/FFFFFF?text=IG" alt="[Image of Instagram icon]"></a>
             </div>
         </div>
     </footer>

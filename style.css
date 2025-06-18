@@ -174,23 +174,64 @@ a {
 
 /* Hero Section */
 .hero-section {
-    background-color: var(--accent-bg); /* Fondo más suave para el hero */
-    padding: 80px 0;
+    position: relative; /* Para que el video y el overlay se posicionen con respecto a esta sección */
+    background-color: var(--accent-bg); /* Fondo de respaldo si el video no carga */
+    padding: 80px 0; /* Padding del contenido */
     display: flex;
     align-items: center;
     min-height: 80vh; /* Altura mínima para que siempre se vea bien */
+    overflow: hidden; /* Para asegurar que el video no se desborde */
 }
 
-.hero-section .container {
-    display: flex;
+/* Video de fondo */
+.hero-video-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 1; /* Detrás del contenido */
+}
+
+.hero-video-background video {
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    object-fit: cover; /* Asegura que el video cubra todo el espacio */
+}
+
+/* Capa de overlay para legibilidad del texto */
+.video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4); /* Color negro semitransparente */
+    z-index: 2; /* Encima del video, debajo del contenido */
+}
+
+/* Contenedor del contenido del hero (texto y botones) */
+.hero-content-container {
+    position: relative; /* Asegura que el contenido esté por encima del video y el overlay */
+    z-index: 3;
+    display: flex; /* Mantiene el layout original de hero */
     align-items: center;
-    gap: 40px; /* Espacio entre el texto y la imagen */
-    flex-wrap: wrap; /* Permite que los elementos se apilen en pantallas pequeñas */
+    gap: 40px;
+    flex-wrap: wrap;
+    height: 100%; /* Asegura que el contenedor de contenido ocupe la altura del hero */
 }
 
 .hero-content {
     flex: 1;
-    min-width: 450px; /* Ancho mínimo para el contenido de texto */
+    min-width: 450px;
+    color: var(--white); /* Texto en blanco para contrastar con el video oscuro */
 }
 
 .hero-content .tagline {
@@ -203,12 +244,12 @@ a {
 
 .hero-content h1 {
     margin-bottom: 25px;
-    color: var(--text-dark);
+    color: var(--white); /* Título en blanco */
 }
 
 .hero-content p {
     font-size: 1.15em;
-    color: var(--text-light);
+    color: rgba(255, 255, 255, 0.9); /* Párrafo en blanco */
     margin-bottom: 30px;
 }
 
@@ -218,24 +259,11 @@ a {
     flex-wrap: wrap;
 }
 
-.hero-image {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    min-width: 350px; /* Ancho mínimo para la imagen */
-}
+/* Las imágenes hero ya no existen, por lo que estas reglas ya no aplican */
+/* .hero-image { flex: 1; display: flex; justify-content: center; min-width: 350px; } */
+/* .hero-image img { max-width: 100%; height: auto; border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); opacity: 0; transition: opacity 1s ease-in-out; } */
+/* .hero-image img.loaded { opacity: 1; } */
 
-.hero-image img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 10px; /* Bordes redondeados como en Wegic */
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1); /* Sombra suave */
-    opacity: 0; /* Oculto inicialmente para fade-in */
-    transition: opacity 1s ease-in-out;
-}
-.hero-image img.loaded {
-    opacity: 1;
-}
 
 /* Problem-Solution Section */
 .problem-solution-section {
@@ -504,12 +532,12 @@ footer .footer-nav ul li a:hover {
         display: none; /* Oculta el botón de contacto si no hay nav */
     }
 
-    .hero-section .container {
+    .hero-section .hero-content-container { /* Ajustar para el nuevo contenedor de contenido */
         flex-direction: column;
         text-align: center;
     }
 
-    .hero-content, .hero-image {
+    .hero-content {
         min-width: unset; /* Elimina el min-width en móviles */
         width: 100%;
     }
