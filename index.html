@@ -15,7 +15,10 @@
 
     <header class="navbar">
         <div class="container">
-            <div class="logo">Pancito Mornings</div>
+            <div class="logo-container">
+                <img src="https://res.cloudinary.com/duegk80qd/image/upload/v1751018161/logo_pancito_mornings_bqpv1o.svg" alt="Pancito Mornings Logo" class="logo-image">
+                <div class="logo-text">Pancito Mornings</div>
+            </div>
             <nav>
                 <ul>
                     <li><a href="#inicio">Inicio</a></li>
@@ -26,9 +29,27 @@
                     <li><a href="#contacto">Contacto</a></li>
                 </ul>
             </nav>
+            <button class="hamburger" id="hamburger" aria-label="Abrir menú de navegación" aria-controls="mobileMenu" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
             <a href="https://forms.gle/HTCUm1Ddp22vtr7NA" class="btn-contact" target="_blank">Contáctanos &rarr;</a>
         </div>
     </header>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu" id="mobileMenu">
+        <ul>
+            <li><a href="#inicio">Inicio</a></li>
+            <li><a href="#solucion">Solución</a></li>
+            <li><a href="#visuales-app">Tu App</a></li>
+            <li><a href="#beneficios">Beneficios</a></li>
+            <li><a href="#testimonios">Testimonios</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+        </ul>
+        <a href="https://forms.gle/HTCUm1Ddp22vtr7NA" class="btn primary" target="_blank" style="margin-top: 30px;">Contáctanos</a>
+    </div>
 
     <main>
         <!-- Sección Principal / Hero con Video de Fondo -->
@@ -64,9 +85,9 @@
                 <div class="content-block">
                     <h2>Pancito Mornings: Tu solución para un despertar perfecto.</h2>
                     <p>Con nuestra app, no tienes que sacrificar tu comodidad por un desayuno delicioso. Te conectamos con las mejores panaderías y proveedores para que recibas, a la hora que elijas, no solo pan calentito, sino un desayuno completo y delicioso: leche, huevos, embutidos, frutas y todo lo que necesitas. Es simple, es cómodo, es tu desayuno ideal entregado a domicilio.</p>
-                    <div class="app-screenshot">
+                    <!-- <div class="app-screenshot">
                         <img class="lazy-load" data-src="https://res.cloudinary.com/duegk80qd/image/upload/v1750284555/home_j6pybj.png" alt="Screenshot de la app Pancito Mornings">
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </section>
@@ -79,24 +100,26 @@
 
                 <div class="app-screenshots-static-grid">
                     <div class="app-screenshot-item">
-                        <img class="lazy-load" data-src="https://res.cloudinary.com/duegk80qd/image/upload/v1750286534/detail_d5sh2e.png" alt="Captura de Pantalla de la App 1">
+                        <img class="lazy-load" data-src="https://res.cloudinary.com/duegk80qd/image/upload/v1750286534/detail_d5sh2e.png" alt="Vista de una tienda en la app Pancito Mornings, mostrando productos y categorías.">
                         <p>Visualiza la tienda y tus productos favoritos.</p>
                     </div>
                     <div class="app-screenshot-item">
-                        <img class="lazy-load" data-src="https://res.cloudinary.com/duegk80qd/image/upload/v1750286557/map_pz9xwh.png" alt="Captura de Pantalla de la App 2">
+                        <img class="lazy-load" data-src="https://res.cloudinary.com/duegk80qd/image/upload/v1750286557/map_pz9xwh.png" alt="Mapa en la app Pancito Mornings para seleccionar la dirección de entrega.">
                         <p>Selecciona tu dirección en el mapa.</p>
                     </div>
                     <div class="app-screenshot-item">
-                        <img class="lazy-load" data-src="https://res.cloudinary.com/duegk80qd/image/upload/v1750286550/cal_kumcyc.png" alt="Captura de Pantalla de la App 3">
+                        <img class="lazy-load" data-src="https://res.cloudinary.com/duegk80qd/image/upload/v1750286550/cal_kumcyc.png" alt="Calendario en la app Pancito Mornings para programar entregas recurrentes.">
                         <p>Programa entregas recurrentes con el calendario.</p>
                     </div>
                 </div>
                 <div class="app-video-walkthrough">
                     <h3>Recorrido Completo: Así de Fácil es Disfrutar tu Mañana.</h3>
-                    <video class="lazy-load" controls preload="none" poster="https://via.placeholder.com/800x450/B0E0E6/333333?text=Video+Recorrido+App+Pancito">
+                    <video class="lazy-load" autoplay loop muted playsinline preload="none" poster="https://via.placeholder.com/800x450/B0E0E6/333333?text=Video+Recorrido+App+Pancito">
                         <source data-src="https://res.cloudinary.com/duegk80qd/video/upload/video_ouszqy.mp4?_s=vp-2.5.0" type="video/mp4">
                         Tu navegador no soporta el video.
                     </video>
+
+                    
                 </div>
             </div>
         </section>
@@ -151,17 +174,17 @@
                 <h2>Lo que dicen nuestros usuarios</h2>
                 <div class="testimonials-grid">
                     <div class="testimonial-item">
-                        <img class="lazy-load avatar" data-src="https://instasize.com/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fmunkee%2Fimage%2Fupload%2Fw_1000%2Cc_fill%2Car_1%3A1%2Cg_auto%2Cr_max%2Fv1682717822%2Finstasize-website%2Flearn%2Ftumblr-profile.webp&w=828&q=75" alt="[Image of user Maria]">
+                        <img class="lazy-load avatar" data-src="https://instasize.com/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fmunkee%2Fimage%2Fupload%2Fw_1000%2Cc_fill%2Car_1%3A1%2Cg_auto%2Fr_max%2Fv1682717822%2Finstasize-website%2Flearn%2Ftumblr-profile.webp&w=828&q=75" alt="Foto de perfil de María G., una clienta satisfecha.">
                         <p class="quote">"¡Pancito Mornings me cambió las mañanas! Ahora puedo desayunar tranquilamente sin preocuparme por salir."</p>
                         <p class="author">María G. - Cliente Feliz</p>
                     </div>
                     <div class="testimonial-item">
-                        <img class="lazy-load avatar" data-src="https://img.freepik.com/foto-gratis/chico-guapo-joven-sonriente-camisa-verde-mostrando-pulgares-arriba_141793-120967.jpg?semt=ais_hybrid&w=740" alt="[Image of user Carlos]">
+                        <img class="lazy-load avatar" data-src="https://img.freepik.com/foto-gratis/chico-guapo-joven-sonriente-camisa-verde-mostrando-pulgares-arriba_141793-120967.jpg?semt=ais_hybrid&w=740" alt="Foto de perfil de Carlos R., un cliente satisfecho.">
                         <p class="quote">"Es increíble la comodidad de recibir el pan fresco en casa. ¡Recomendado 100% para los que odian las prisas!"</p>
                         <p class="author">Carlos R. - Siempre a Tiempo</p>
                     </div>
                     <div class="testimonial-item">
-                        <img class="lazy-load avatar" data-src="https://img.freepik.com/foto-gratis/primer-plano-joven-profesional-haciendo-contacto-visual-contra-fondo-color_662251-651.jpg?semt=ais_hybrid&w=740" alt="[Image of user Sofia]">
+                        <img class="lazy-load avatar" data-src="https://img.freepik.com/foto-gratis/primer-plano-joven-profesional-haciendo-contacto-visual-contra-fondo-color_662251-651.jpg?semt=ais_hybrid&w=740" alt="Foto de perfil de Sofía L., una suscriptora satisfecha.">
                         <p class="quote">"Mi suscripción es mi salvación. Siempre tengo el pan fresco y me olvido de una preocupación diaria."</p>
                         <p class="author">Sofía L. - Suscriptora</p>
                     </div>
@@ -170,15 +193,15 @@
         </section>
 
         <!-- Sección CTA Final -->
-        <section class="final-cta-section">
+        <section class="final-cta-section reveal-on-scroll">
             <div class="container">
                 <h2>¡Transforma tus mañanas con Pancito Mornings!</h2>
                 <p>Desayunos completos y pan fresco te esperan en tu puerta. ¡Despierta con el mejor sabor y sin prisas!</p>
                 <a href="https://forms.gle/HTCUm1Ddp22vtr7NA" class="btn primary" target="_blank">¡Sí, Quiero Mañanas Más Cómodas!</a>
-                <p class="download-text">Descarga la app hoy y comienza a disfrutar.</p>
+                <p class="download-text">O descarga nuestra app:</p>
                 <div class="app-stores">
-                    <a href="#"><img class="lazy-load" data-src="https://via.placeholder.com/120x40?text=App+Store" alt="[Image of App Store download button]"></a>
-                    <a href="#"><img class="lazy-load" data-src="https://via.placeholder.com/120x40?text=Google+Play" alt="[Image of Google Play download button]"></a>
+                    <a href="#" target="_blank"><img class="lazy-load" data-src="https://res.cloudinary.com/duegk80qd/image/upload/v1751018161/app_store_g24s5k.svg" alt="Descargar en la App Store"></a>
+                    <a href="#" target="_blank"><img class="lazy-load" data-src="https://res.cloudinary.com/duegk80qd/image/upload/v1751018161/google_play_tna59k.svg" alt="Disponible en Google Play"></a>
                 </div>
             </div>
         </section>
@@ -186,41 +209,38 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2025 Pancito Mornings. Todos los derechos reservados.</p>
+            <p>&copy; 2024 Pancito Mornings. Todos los derechos reservados.</p>
             <nav class="footer-nav">
                 <ul>
-                    <li><a href="#">Inicio</a></li>
-                    <li><a href="#">Nuestra Solución</a></li>
-                    <li><a href="#">Beneficios</a></li>
-                    <li><a href="#">Términos y Condiciones</a></li>
-                    <li><a href="https://forms.gle/HTCUm1Ddp22vtr7NA" target="_blank">Contáctanos</a></li>
+                    <li><a href="#">Política de Privacidad</a></li>
+                    <li><a href="#">Términos de Servicio</a></li>
+                    <li><a href="#">Preguntas Frecuentes</a></li>
                 </ul>
             </nav>
             <div class="social-icons">
-                <a href="#"><img class="lazy-load" data-src="https://via.placeholder.com/24/FFFFFF?text=FB" alt="[Image of Facebook icon]"></a>
-                <a href="#"><img class="lazy-load" data-src="https://via.placeholder.com/24/FFFFFF?text=TW" alt="[Image of Twitter icon]"></a>
-                <a href="#"><img class="lazy-load" data-src="https://via.placeholder.com/24/FFFFFF?text=IG" alt="[Image of Instagram icon]"></a>
+                <a href="#" target="_blank" aria-label="Visita nuestra página de Facebook"><img class="lazy-load" data-src="https://res.cloudinary.com/duegk80qd/image/upload/v1751018161/facebook_mswvlz.svg" alt="Facebook"></a>
+                <a href="#" target="_blank" aria-label="Síguenos en Instagram"><img class="lazy-load" data-src="https://res.cloudinary.com/duegk80qd/image/upload/v1751018161/instagram_kfrjdf.svg" alt="Instagram"></a>
+                <a href="#" target="_blank" aria-label="Contáctanos por WhatsApp"><img class="lazy-load" data-src="https://res.cloudinary.com/duegk80qd/image/upload/v1751018161/whatsapp_d32j5p.svg" alt="WhatsApp"></a>
             </div>
         </div>
     </footer>
 
-    <!-- Ventana Modal para Contacto - DESHABILITADA -->
-    <!--
+    <!-- Modal (si es necesario en el futuro) -->
+    <!-- 
     <div id="contactModal" class="modal">
         <div class="modal-content">
             <span class="close-button">&times;</span>
-            <h2>¡Recibe Novedades de Pancito Mornings!</h2>
-            <p>Déjanos tu correo electrónico y sé el primero en enterarte de promociones, nuevos desayunos y ¡más sorpresas!</p>
+            <h2>Contáctanos</h2>
+            <p>Déjanos tu correo y sé el primero en saber cuándo lanzamos.</p>
             <form id="contactForm">
-                <input type="email" id="emailInput" placeholder="Tu correo electrónico" required>
-                <button type="submit" class="btn primary">Suscribirme</button>
+                <input type="email" name="email" placeholder="tu.correo@ejemplo.com" required>
+                <button type="submit" class="btn primary">Enviar</button>
             </form>
             <p id="modalMessage" class="modal-message"></p>
         </div>
     </div>
     -->
 
-    <!-- Enlace al archivo JavaScript externo -->
     <script src="script.js"></script>
 </body>
 </html>

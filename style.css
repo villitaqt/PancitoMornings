@@ -1,36 +1,96 @@
-/* Variables CSS para Colores y Fuentes */
+/*
+==================================================
+  Pancito Morning - Landing Page Stylesheet
+==================================================
+
+  TABLE OF CONTENTS
+  -----------------
+  1.  GENERAL STYLES
+      - CSS Variables
+      - Reset & Body
+      - Container
+      - Typography (h1, h2, h3, p, a)
+      - Buttons
+
+  2.  HEADER & NAVIGATION
+      - Navbar
+      - Logo
+      - Desktop Navigation
+      - Mobile Navigation (Hamburger & Overlay)
+
+  3.  PAGE SECTIONS
+      - 3.1 Hero Section
+      - 3.2 Problem-Solution Section
+      - 3.3 App Visuals Section
+      - 3.4 Benefits Section
+      - 3.5 Testimonials Section
+      - 3.6 Final CTA Section
+
+  4.  FOOTER
+
+  5.  COMPONENTS
+      - 5.1 Modal
+      - 5.2 Cards (Benefit, Testimonial, Screenshot)
+      - 5.3 Toast Notifications
+
+  6.  UTILITIES & HELPERS
+      - 6.1 Accessibility & Focus States
+      - 6.2 Animations & Transitions (Lazy Loading, Shimmer)
+      - 6.3 Form States (Error/Success)
+
+  7.  MEDIA QUERIES (RESPONSIVENESS)
+      - 7.1 Large Desktops (min-width: 1200px)
+      - 7.2 Tablets & Small Desktops (max-width: 992px)
+      - 7.3 Mobile Devices (max-width: 768px)
+      - 7.4 Small Mobile Devices (max-width: 480px)
+*/
+
+/* =========================================================================
+   1.0 GENERAL STYLES
+   ========================================================================== */
+
+/* CSS Variables
+--------------------------------------------- */
 :root {
-    --primary-color: #FF8C42; /* Naranja/Melocotón, similar a los botones de Wegic */
-    --secondary-color: #F7E6D7; /* Beige muy claro, fondo general */
+    --primary-color: #FF8C42; /* Naranja/Melocotón */
+    --secondary-color: #FFFFFF; /* Fondo blanco */
     --text-dark: #333333;
     --text-light: #555555;
     --white: #FFFFFF;
-    --accent-bg: #FFEAD0; /* Un beige un poco más oscuro para secciones alternas */
-
+    --accent-bg: #F8F9FA; /* Gris muy claro para secciones */
     --font-heading: 'Poppins', sans-serif;
     --font-body: 'Inter', sans-serif;
 }
 
-/* Reset Básico y Estilos Generales */
+/* Reset & Body
+--------------------------------------------- */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     font-family: var(--font-body);
     line-height: 1.6;
     color: var(--text-dark);
-    background-color: var(--secondary-color); /* Fondo general cálido */
+    background-color: var(--secondary-color);
 }
 
+/* Container
+--------------------------------------------- */
 .container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
 }
 
+/* Typography (h1, h2, h3, p, a)
+--------------------------------------------- */
 h1, h2, h3 {
     font-family: var(--font-heading);
     color: var(--text-dark);
@@ -38,7 +98,7 @@ h1, h2, h3 {
 }
 
 h1 {
-    font-size: 3.2em; /* Más grande para el hero */
+    font-size: 3.2em;
     line-height: 1.1;
     font-weight: 700;
 }
@@ -66,6 +126,8 @@ a {
     color: var(--primary-color);
 }
 
+/* Buttons
+--------------------------------------------- */
 .btn {
     display: inline-block;
     padding: 15px 30px;
@@ -74,6 +136,24 @@ a {
     transition: background-color 0.3s ease, transform 0.2s ease;
     text-align: center;
     font-family: var(--font-heading);
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+.btn:hover::before {
+    left: 100%;
 }
 
 .btn.primary {
@@ -83,7 +163,7 @@ a {
 }
 
 .btn.primary:hover {
-    background-color: #E67A37; /* Tono más oscuro al pasar el mouse */
+    background-color: #E67A37; /* Darker shade on hover */
     transform: translateY(-2px);
 }
 
@@ -99,11 +179,17 @@ a {
     transform: translateY(-2px);
 }
 
-/* Navbar */
+/* =========================================================================
+   2.0 HEADER & NAVIGATION
+   ========================================================================== */
+
+/* Navbar
+--------------------------------------------- */
 .navbar {
     background-color: var(--white);
     padding: 15px 0;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+    border-bottom: 1px solid #E9ECEF;
     position: sticky;
     top: 0;
     z-index: 1000;
@@ -115,6 +201,27 @@ a {
     align-items: center;
 }
 
+/* Logo */
+.navbar .logo-container {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.navbar .logo-image {
+    height: 40px;
+    width: auto;
+    border-radius: 8px;
+}
+
+.navbar .logo-text {
+    font-family: var(--font-heading);
+    font-size: 1.8em;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+/* Legacy logo class for backwards compatibility */
 .navbar .logo {
     font-family: var(--font-heading);
     font-size: 1.8em;
@@ -122,6 +229,7 @@ a {
     color: var(--primary-color);
 }
 
+/* Desktop Navigation */
 .navbar nav ul {
     list-style: none;
     display: flex;
@@ -172,18 +280,112 @@ a {
     border-color: var(--primary-color);
 }
 
-/* Hero Section */
-.hero-section {
-    position: relative; /* Para que el video y el overlay se posicionen con respecto a esta sección */
-    background-color: var(--accent-bg); /* Fondo de respaldo si el video no carga */
-    padding: 80px 0; /* Padding del contenido */
-    display: flex;
-    align-items: center;
-    min-height: 80vh; /* Altura mínima para que siempre se vea bien */
-    overflow: hidden; /* Para asegurar que el video no se desborde */
+/* Mobile Navigation (Hamburger & Overlay)
+--------------------------------------------- */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    padding: 10px;
+    background: none;
+    border: none;
 }
 
-/* Video de fondo */
+.hamburger span {
+    width: 25px;
+    height: 3px;
+    background-color: var(--text-dark);
+    margin: 3px 0;
+    transition: 0.3s;
+    border-radius: 3px;
+}
+
+.hamburger.active span:nth-child(1) {
+    transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: rotate(45deg) translate(-5px, -6px);
+}
+
+.mobile-menu {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.9);
+    z-index: 1000;
+    padding: 100px 20px 20px;
+}
+
+.mobile-menu.active {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+.mobile-menu ul {
+    list-style: none;
+    text-align: center;
+}
+
+.mobile-menu ul li {
+    margin: 20px 0;
+}
+
+.mobile-menu ul li a {
+    color: white;
+    font-size: 1.5em;
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.mobile-menu ul li a:hover {
+    color: var(--primary-color);
+}
+
+/* =========================================================================
+   3.0 PAGE SECTIONS
+   ========================================================================== */
+
+/* General Section Styling */
+.problem-solution-section,
+.app-visuals-section,
+.testimonials-section {
+    padding: 80px 0;
+    background-color: var(--accent-bg);
+}
+
+.benefits-section,
+.final-cta-section {
+    padding: 80px 0;
+    background-color: var(--white);
+    border-top: 1px solid #E9ECEF;
+    border-bottom: 1px solid #E9ECEF;
+}
+
+/* 3.1 Hero Section
+--------------------------------------------- */
+.hero-section {
+    position: relative;
+    background-color: var(--accent-bg);
+    padding: 60px 0;
+    display: flex;
+    align-items: center;
+    min-height: 60vh;
+    max-height: 70vh;
+    overflow: hidden;
+}
+
 .hero-video-background {
     position: absolute;
     top: 0;
@@ -191,7 +393,7 @@ a {
     width: 100%;
     height: 100%;
     overflow: hidden;
-    z-index: 1; /* Detrás del contenido */
+    z-index: 1;
 }
 
 .hero-video-background video {
@@ -203,35 +405,33 @@ a {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    object-fit: cover; /* Asegura que el video cubra todo el espacio */
+    object-fit: cover;
 }
 
-/* Capa de overlay para legibilidad del texto */
 .video-overlay {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.4); /* Color negro semitransparente */
-    z-index: 2; /* Encima del video, debajo del contenido */
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 2;
 }
 
-/* Contenedor del contenido del hero (texto y botones) */
 .hero-content-container {
-    position: relative; /* Asegura que el contenido esté por encima del video y el overlay */
+    position: relative;
     z-index: 3;
-    display: flex; /* Mantiene el layout original de hero */
+    display: flex;
     align-items: center;
     gap: 40px;
     flex-wrap: wrap;
-    height: 100%; /* Asegura que el contenedor de contenido ocupe la altura del hero */
+    height: 100%;
 }
 
 .hero-content {
     flex: 1;
     min-width: 450px;
-    color: var(--white); /* Texto en blanco para contrastar con el video oscuro */
+    color: var(--white);
 }
 
 .hero-content .tagline {
@@ -244,12 +444,12 @@ a {
 
 .hero-content h1 {
     margin-bottom: 25px;
-    color: var(--white); /* Título en blanco */
+    color: var(--white);
 }
 
 .hero-content p {
     font-size: 1.15em;
-    color: rgba(255, 255, 255, 0.9); /* Párrafo en blanco */
+    color: rgba(255, 255, 255, 0.9);
     margin-bottom: 30px;
 }
 
@@ -259,17 +459,16 @@ a {
     flex-wrap: wrap;
 }
 
-/* Problem-Solution Section */
+/* 3.2 Problem-Solution Section
+--------------------------------------------- */
 .problem-solution-section {
-    padding: 80px 0;
-    background-color: var(--white); /* Fondo blanco para contraste */
     text-align: center;
 }
 
 .problem-solution-section .container {
     display: flex;
-    gap: 60px; /* Espacio entre los bloques de problema y solución */
-    align-items: flex-start; /* Alinea arriba si los contenidos tienen diferentes alturas */
+    gap: 60px;
+    align-items: flex-start;
     flex-wrap: wrap;
 }
 
@@ -301,17 +500,11 @@ a {
     height: auto;
     border-radius: 10px;
     box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-    opacity: 0; /* Oculto inicialmente para fade-in */
-    transition: opacity 1s ease-in-out;
-}
-.app-screenshot img.loaded {
-    opacity: 1;
 }
 
-/* Nueva Sección: Visuales de la Aplicación */
+/* 3.3 App Visuals Section
+--------------------------------------------- */
 .app-visuals-section {
-    padding: 80px 0;
-    background-color: var(--accent-bg); /* Fondo similar al hero para coherencia */
     text-align: center;
 }
 
@@ -325,44 +518,12 @@ a {
 .app-screenshots-static-grid {
     display: flex;
     justify-content: center;
-    align-items: flex-start; /* Alinea al inicio si las imágenes tienen diferentes alturas */
+    align-items: flex-start;
     gap: 40px;
     flex-wrap: wrap;
-    margin-bottom: 50px; /* Espacio entre las capturas y el video */
+    margin-bottom: 50px;
 }
 
-.app-screenshot-item {
-    padding: 20px;
-    background-color: var(--white);
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    max-width: 320px; /* Ancho máximo para cada captura */
-}
-
-.app-screenshot-item img {
-    width: 100%;
-    height: auto;
-    border-radius: 8px;
-    margin-bottom: 15px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    opacity: 0; /* Oculto inicialmente para fade-in */
-    transition: opacity 1s ease-in-out;
-}
-.app-screenshot-item img.loaded {
-    opacity: 1;
-}
-
-.app-screenshot-item p {
-    font-size: 1em;
-    color: var(--text-light);
-    margin-bottom: 0;
-}
-
-/* Video de recorrido de la app */
 .app-video-walkthrough {
     margin-top: 50px;
     text-align: center;
@@ -375,60 +536,33 @@ a {
 }
 
 .app-video-walkthrough video {
-    max-width: 900px; /* Ancho máximo del video */
+    max-width: 400px;
     width: 100%;
     height: auto;
     border-radius: 10px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-    opacity: 0; /* Oculto inicialmente para fade-in */
-    transition: opacity 1s ease-in-out;
-}
-.app-video-walkthrough video.loaded {
-    opacity: 1;
 }
 
-
-/* Benefits Section */
+/* 3.4 Benefits Section
+--------------------------------------------- */
 .benefits-section {
-    padding: 80px 0;
-    background-color: var(--accent-bg); /* Fondo alterno para esta sección */
     text-align: center;
 }
 
 .benefits-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* 3 columnas en escritorio, adaptable */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 40px;
     margin-top: 50px;
 }
 
-.benefit-item {
-    background-color: var(--white);
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-    text-align: center;
-    transition: transform 0.3s ease;
-}
-
-.benefit-item:hover {
-    transform: translateY(-10px); /* Efecto suave al pasar el mouse */
-}
-
-/* Estilos para los iconos de Material Symbols */
 .benefit-item .material-symbols-outlined {
-    font-size: 60px; /* Tamaño grande para el icono */
-    color: var(--primary-color); /* Color del icono */
-    display: block; /* Para centrarlo horizontalmente */
-    margin: 0 auto 20px auto; /* Centrar y añadir margen inferior */
-    /* Configuraciones de variación de fuente que nos pasaste */
-    font-variation-settings:
-        'FILL' 0,
-        'wght' 400,
-        'GRAD' 0,
-        'opsz' 24;
+    font-size: 60px;
+    color: var(--primary-color);
+    display: block;
+    margin: 0 auto 20px auto;
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
 }
-
 
 .benefit-item h3 {
     margin-bottom: 10px;
@@ -440,10 +574,9 @@ a {
     color: var(--text-light);
 }
 
-/* Testimonials Section */
+/* 3.5 Testimonials Section
+--------------------------------------------- */
 .testimonials-section {
-    padding: 80px 0;
-    background-color: var(--white);
     text-align: center;
 }
 
@@ -454,14 +587,6 @@ a {
     margin-top: 50px;
 }
 
-.testimonial-item {
-    background-color: var(--accent-bg);
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-    text-align: center;
-}
-
 .testimonial-item .avatar {
     width: 80px;
     height: 80px;
@@ -469,11 +594,6 @@ a {
     object-fit: cover;
     margin-bottom: 20px;
     border: 3px solid var(--primary-color);
-    opacity: 0; /* Oculto inicialmente para fade-in */
-    transition: opacity 1s ease-in-out;
-}
-.testimonial-item .avatar.loaded {
-    opacity: 1;
 }
 
 .testimonial-item .quote {
@@ -489,11 +609,9 @@ a {
     font-size: 0.95em;
 }
 
-
-/* Final CTA Section */
+/* 3.6 Final CTA Section
+--------------------------------------------- */
 .final-cta-section {
-    background-color: var(--white);
-    padding: 80px 0;
     text-align: center;
 }
 
@@ -527,18 +645,14 @@ a {
 }
 
 .app-stores img {
-    height: 40px; /* Altura de los logos de tiendas de apps */
-    opacity: 0; /* Oculto inicialmente para fade-in */
-    transition: opacity 1s ease-in-out;
-}
-.app-stores img.loaded {
-    opacity: 1;
+    height: 40px;
 }
 
-
-/* Footer */
+/* =========================================================================
+   4.0 FOOTER
+   ========================================================================== */
 footer {
-    background-color: var(--text-dark); /* Fondo oscuro como en Wegic */
+    background-color: var(--text-dark);
     color: var(--white);
     padding: 40px 0;
     font-size: 0.9em;
@@ -555,7 +669,7 @@ footer .container {
 footer p {
     margin: 0;
     color: rgba(255, 255, 255, 0.7);
-    flex-basis: 100%; /* Ocupa todo el ancho en móviles */
+    flex-basis: 100%;
     margin-bottom: 20px;
 }
 
@@ -568,7 +682,7 @@ footer .footer-nav ul {
 }
 
 footer .footer-nav ul li {
-    margin: 0 15px 10px 15px; /* Espacio entre enlaces */
+    margin: 0 15px 10px 15px;
 }
 
 footer .footer-nav ul li a {
@@ -590,47 +704,41 @@ footer .footer-nav ul li a:hover {
 .social-icons img {
     width: 24px;
     height: 24px;
-    filter: brightness(0) invert(1); /* Para iconos blancos en fondo oscuro */
-    opacity: 0; /* Oculto inicialmente para fade-in */
-    transition: opacity 1s ease-in-out;
-}
-.social-icons img.loaded {
-    opacity: 1;
+    filter: brightness(0) invert(1);
 }
 
+/* =========================================================================
+   5.0 COMPONENTS
+   ========================================================================== */
 
-/* Estilos para la Ventana Modal */
+/* 5.1 Modal
+--------------------------------------------- */
 .modal {
-    display: none; /* Oculto por defecto */
-    position: fixed; /* Permanece en la misma posición al hacer scroll */
-    z-index: 10000; /* Alto z-index para que esté encima de todo */
+    display: none;
+    position: fixed;
+    z-index: 10000;
     left: 0;
     top: 0;
-    width: 100%; /* Ancho completo */
-    height: 100%; /* Alto completo */
-    overflow: auto; /* Habilitar scroll si el contenido es demasiado largo */
-    background-color: rgba(0, 0, 0, 0.6); /* Fondo semi-transparente oscuro */
-    display: flex; /* Usar flexbox para centrar el contenido */
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
     align-items: center;
     justify-content: center;
 }
 
 .modal-content {
     background-color: var(--white);
-    margin: auto; /* Centrar horizontalmente */
+    margin: auto;
     padding: 40px;
     border-radius: 10px;
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
     width: 90%;
-    max-width: 500px; /* Ancho máximo para el modal */
+    max-width: 500px;
     position: relative;
     text-align: center;
-    animation: fadeInModal 0.3s ease-out; /* Animación de entrada */
-}
-
-@keyframes fadeInModal {
-    from { opacity: 0; transform: translateY(-20px); }
-    to { opacity: 1; transform: translateY(0); }
+    animation: fadeInModal 0.3s ease-out;
 }
 
 .close-button {
@@ -674,6 +782,13 @@ footer .footer-nav ul li a:hover {
     border-radius: 8px;
     font-size: 1em;
     color: var(--text-dark);
+    transition: all 0.3s ease;
+}
+
+.modal-content input[type="email"]:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(255, 140, 66, 0.1);
 }
 
 .modal-content input[type="email"]::placeholder {
@@ -691,107 +806,306 @@ footer .footer-nav ul li a:hover {
 .modal-message {
     margin-top: 20px;
     font-size: 1em;
-    color: green; /* Color para mensajes de éxito */
-    opacity: 0; /* Oculto por defecto */
+    color: green;
+    opacity: 0;
     transition: opacity 0.3s ease;
 }
 .modal-message.show {
     opacity: 1;
 }
 
-/* Media Queries para Responsividad */
-@media (max-width: 992px) {
-    .navbar nav {
-        display: none; /* Oculta la navegación en pantallas pequeñas, usar un menú de hamburguesa real aquí */
-    }
-    .navbar .btn-contact {
-        display: none; /* Oculta el botón de contacto si no hay nav */
-    }
+/* 5.2 Cards (Benefit, Testimonial, Screenshot)
+--------------------------------------------- */
+.benefit-item,
+.testimonial-item,
+.app-screenshot-item {
+    background-color: var(--white);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    border: 1px solid #F1F3F4;
+    text-align: center;
+    transition: all 0.3s ease;
+}
 
-    .hero-section .hero-content-container { /* Ajustar para el nuevo contenedor de contenido */
+.benefit-item:hover {
+    transform: translateY(-10px);
+}
+
+.testimonial-item:hover,
+.app-screenshot-item:hover {
+    transform: scale(1.02);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.app-screenshot-item {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 320px;
+    cursor: pointer;
+}
+
+.app-screenshot-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.app-screenshot-item p {
+    font-size: 1em;
+    color: var(--text-light);
+    margin-bottom: 0;
+}
+
+/* 5.3 Toast Notifications
+--------------------------------------------- */
+.toast {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: var(--primary-color);
+    color: white;
+    padding: 15px 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+    z-index: 1001;
+}
+
+.toast.show {
+    transform: translateX(0);
+}
+
+/* =========================================================================
+   6.0 UTILITIES & HELPERS
+   ========================================================================== */
+
+/* 6.1 Accessibility & Focus States
+--------------------------------------------- */
+*:focus {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+}
+
+.btn:focus {
+    outline: 3px solid rgba(255, 140, 66, 0.3);
+    outline-offset: 2px;
+}
+
+button:focus,
+a:focus {
+    outline: 3px solid rgba(255, 140, 66, 0.5);
+}
+
+/* 6.2 Animations & Transitions
+--------------------------------------------- */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes fadeInModal {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes shimmer {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+
+/* Lazy Loading / Image Placeholders */
+.lazy-load {
+    opacity: 0;
+    transition: opacity 0.6s ease-in-out;
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+}
+
+.lazy-load.loaded {
+    opacity: 1;
+    background: none;
+    animation: none;
+}
+
+/* Specific lazy load placeholders */
+.app-screenshot img,
+.app-screenshot-item img,
+.app-video-walkthrough video,
+.testimonial-item .avatar,
+.app-stores img,
+.social-icons img {
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+.app-screenshot img.loaded,
+.app-screenshot-item img.loaded,
+.app-video-walkthrough video.loaded,
+.testimonial-item .avatar.loaded,
+.app-stores img.loaded,
+.social-icons img.loaded {
+    opacity: 1;
+}
+
+.app-screenshot-item img.lazy-load {
+    min-height: 200px;
+    border-radius: 8px;
+}
+
+.testimonial-item img.lazy-load {
+    min-height: 80px;
+    min-width: 80px;
+    border-radius: 50%;
+}
+
+/* 6.3 Form States
+--------------------------------------------- */
+.error {
+    color: #dc3545;
+    border-color: #dc3545;
+}
+
+.success {
+    color: #28a745;
+    border-color: #28a745;
+}
+
+/* =========================================================================
+   7.0 MEDIA QUERIES (RESPONSIVENESS)
+   ========================================================================== */
+
+/* 7.1 Large Desktops (min-width: 1200px)
+--------------------------------------------- */
+@media (min-width: 1200px) {
+    .hero-section {
+        min-height: 65vh;
+        max-height: 75vh;
+    }
+    .app-video-walkthrough video {
+        max-width: 450px;
+    }
+}
+
+/* 7.2 Tablets & Small Desktops (max-width: 992px)
+--------------------------------------------- */
+@media (max-width: 992px) {
+    .navbar nav,
+    .navbar .btn-contact {
+        display: none;
+    }
+    .hamburger {
+        display: flex;
+    }
+    .hero-section .hero-content-container {
         flex-direction: column;
         text-align: center;
     }
-
     .hero-content {
-        min-width: unset; /* Elimina el min-width en móviles */
+        min-width: unset;
         width: 100%;
     }
-
     .hero-content h1 {
         font-size: 2.5em;
     }
-
     .hero-buttons {
         justify-content: center;
     }
-
     .problem-solution-section .container {
         flex-direction: column;
     }
-
     .problem-solution-section .content-block {
         min-width: unset;
         width: 100%;
     }
-
-    .problem-solution-section .content-block h2 {
-        text-align: center; /* Centra los títulos del problema/solución en móvil */
-    }
-
+    .problem-solution-section .content-block h2,
     .problem-solution-section .content-block p {
-        text-align: center; /* Centra los párrafos del problema/solución en móvil */
+        text-align: center;
     }
-
-    .app-screenshots-static-grid { /* Ajuste para móviles */
+    .app-screenshots-static-grid {
         flex-direction: column;
+        align-items: center;
         gap: 30px;
     }
-
     .app-screenshot-item {
-        max-width: 80%; /* Más ancho en móvil */
+        max-width: 80%;
     }
-
-    .app-video-walkthrough video {
-        max-width: 100%; /* Asegura que el video ocupe todo el ancho disponible en móvil */
-    }
-
-    .benefits-grid {
-        grid-template-columns: 1fr; /* Una columna en móvil */
-    }
-
+    .benefits-grid,
     .testimonials-grid {
-        grid-template-columns: 1fr; /* Una columna en móvil */
+        grid-template-columns: 1fr;
     }
-
     footer .container {
         flex-direction: column;
         align-items: center;
     }
-
     footer .footer-nav ul {
         flex-direction: column;
         align-items: center;
     }
-
     footer .footer-nav ul li {
         margin: 5px 0;
     }
 }
 
+/* 7.3 Mobile Devices (max-width: 768px)
+--------------------------------------------- */
 @media (max-width: 768px) {
-    h1 {
-        font-size: 2em;
+    h1 { font-size: 2.2em; }
+    h2 { font-size: 1.8em; }
+
+    .hero-section,
+    .problem-solution-section,
+    .benefits-section,
+    .final-cta-section,
+    .testimonials-section,
+    .app-visuals-section {
+        padding: 60px 0;
     }
-    h2 {
+
+    /* Consolidate mobile nav display from original file */
+    .navbar nav,
+    .navbar .btn-contact {
+        display: none;
+    }
+    .hamburger {
+        display: flex;
+    }
+    
+    /* Ensure mobile menu is not shown on larger screens if active */
+    @media (min-width: 769px) {
+        .mobile-menu {
+            display: none !important;
+        }
+    }
+
+    /* Hero Section */
+    .hero-section {
+        min-height: 50vh;
+        max-height: 60vh;
+        padding: 40px 0;
+    }
+    .hero-content h1 {
         font-size: 1.8em;
     }
-    .hero-section, .problem-solution-section, .benefits-section, .final-cta-section, .testimonials-section, .app-visuals-section {
-        padding: 60px 0;
+    .hero-content p {
+        font-size: 1em;
+    }
+
+    /* App Visuals */
+    .app-video-walkthrough video {
+        max-width: 320px;
     }
     .app-video-walkthrough h3 {
         font-size: 1.5em;
     }
+
+    /* Modal */
     .modal-content {
         padding: 30px;
     }
@@ -803,21 +1117,15 @@ footer .footer-nav ul li a:hover {
     }
 }
 
+/* 7.4 Small Mobile Devices (max-width: 480px)
+--------------------------------------------- */
 @media (max-width: 480px) {
-    .container {
-        padding: 0 15px;
+    .hero-section {
+        min-height: 45vh;
+        max-height: 55vh;
+        padding: 30px 0;
     }
-    .hero-content h1 {
-        font-size: 1.8em;
-    }
-    .hero-content p {
-        font-size: 1em;
-    }
-    .btn {
-        padding: 12px 20px;
-        font-size: 0.9em;
-    }
-    .app-stores img {
-        height: 35px;
+    .app-video-walkthrough video {
+        max-width: 280px;
     }
 }
