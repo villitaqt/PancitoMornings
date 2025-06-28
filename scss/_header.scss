@@ -1,0 +1,196 @@
+// Estilos del header y navegación
+body {
+  padding-top: 0; // Removemos padding body por el navbar fixed
+}
+
+.navbar {
+  background: transparent;
+  padding: 20px 0;
+  box-shadow: none;
+  border-bottom: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  transition: all 0.3s ease;
+
+  &.scrolled {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    padding: 15px 0;
+    box-shadow: 0 4px 25px rgba(0, 0, 0, 0.08);
+    border-bottom: 1px solid rgba(233, 236, 239, 0.3);
+
+    // Asegurar el backdrop blur en navegadores compatibles
+    @supports (backdrop-filter: blur(10px)) {
+      backdrop-filter: blur(15px);
+      background: rgba(255, 255, 255, 0.9);
+    }
+
+    // Fallback para navegadores que no soportan backdrop-filter
+    @supports not (backdrop-filter: blur(10px)) {
+      background: rgba(255, 255, 255, 0.95);
+    }
+  }
+
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .logo-container {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .logo-image {
+    height: 40px;
+    border-radius: 8px;
+  }
+
+  .logo-text {
+    font-size: 1.8em;
+    font-weight: 700;
+    color: white;
+    transition: color 0.3s ease;
+  }
+
+  &.scrolled .logo-text {
+    color: $primary;
+  }
+
+  nav ul {
+    display: flex;
+    gap: 30px;
+  }
+
+  nav a {
+    color: white;
+    font-weight: 500;
+    font-size: 1.05em;
+    position: relative;
+    transition: color 0.3s ease;
+
+    &:hover::after {
+      width: 100%;
+      left: 0;
+      background: $primary;
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      width: 0;
+      height: 2px;
+      display: block;
+      margin-top: 5px;
+      right: 0;
+      background: $primary;
+      transition: width 0.3s;
+    }
+  }
+
+  &.scrolled nav a {
+    color: $text-light;
+  }
+
+  .btn-contact {
+    padding: 10px 20px;
+    border: 1px solid white;
+    color: white;
+    border-radius: 5px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+
+    &:hover {
+      background: $primary;
+      color: $secondary;
+      border-color: $primary;
+    }
+  }
+
+  &.scrolled .btn-contact {
+    border: 1px solid $text-light;
+    color: $text-light;
+
+    &:hover {
+      background: $primary;
+      color: white;
+      border-color: $primary;
+    }
+  }
+
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    padding: 10px;
+    background: none;
+    border: none;
+
+    span {
+      width: 25px;
+      height: 3px;
+      background: white;
+      margin: 3px 0;
+      border-radius: 3px;
+      transition: 0.3s;
+    }
+
+    &.active span:nth-child(1) {
+      transform: rotate(-45deg) translate(-5px, 6px);
+    }
+
+    &.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    &.active span:nth-child(3) {
+      transform: rotate(45deg) translate(-5px, -6px);
+    }
+  }
+
+  &.scrolled .hamburger span {
+    background: $text-dark;
+  }
+}
+
+.mobile-menu {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.9);
+  z-index: 1000;
+  padding: 100px 20px 20px;
+
+  &.active {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    animation: fadeIn 0.3s;
+  }
+
+  ul {
+    text-align: center;
+  }
+
+  li {
+    margin: 20px 0;
+  }
+
+  a {
+    color: #fff;
+    font-size: 1.5em;
+    font-weight: 600;
+
+    &:hover {
+      color: $primary;
+    }
+  }
+}

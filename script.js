@@ -1,5 +1,23 @@
 // JavaScript para Lazy Loading de Imágenes y Videos
 document.addEventListener('DOMContentLoaded', function() {
+    // Navbar transparente con scroll
+    const navbar = document.querySelector('.navbar');
+    
+    function handleScroll() {
+        if (window.scrollY > 50) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+    }
+    
+    // Ejecutar al cargar la página
+    handleScroll();
+    
+    // Ejecutar al hacer scroll
+    window.addEventListener('scroll', handleScroll);
+
+    // Lazy loading de imágenes y videos
     const lazyLoadElements = document.querySelectorAll('img.lazy-load, video.lazy-load');
 
     if ('IntersectionObserver' in window) {
@@ -112,26 +130,90 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Intersection Observer for scroll animations
+    // Intersection Observer for scroll animations - Mejorado para ambas direcciones
     const animateOnScroll = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
+            // Agregar clase cuando el elemento entra en el viewport
             if (entry.isIntersecting) {
+                entry.target.classList.add('animate-in');
                 entry.target.style.opacity = '1';
                 entry.target.style.transform = 'translateY(0)';
+            } else {
+                // Remover clase cuando el elemento sale del viewport (solo en desktop)
+                if (window.innerWidth > 768) {
+                    entry.target.classList.remove('animate-in');
+                    entry.target.style.opacity = '0';
+                    entry.target.style.transform = 'translateY(30px)';
+                }
             }
         });
     }, {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
+        threshold: 0.15,
+        rootMargin: '0px 0px -60px 0px'
     });
 
     // Add scroll animation to sections
     document.querySelectorAll('section').forEach(section => {
         section.style.opacity = '0';
         section.style.transform = 'translateY(30px)';
-        section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        section.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
         animateOnScroll.observe(section);
     });
+
+    // Animación mejorada para elementos individuales
+    const animateElements = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('animate-in');
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+            } else {
+                // Solo animar hacia atrás en desktop para mejor UX
+                if (window.innerWidth > 768) {
+                    entry.target.classList.remove('animate-in');
+                    entry.target.style.opacity = '0';
+                    entry.target.style.transform = 'translateY(20px)';
+                }
+            }
+        });
+    }, {
+        threshold: 0.25,
+        rootMargin: '0px 0px -40px 0px'
+    });
+
+    // Aplicar animación a elementos específicos con delays escalonados
+    document.querySelectorAll('.benefit-item, .testimonial-item, .step-item, .carousel-card').forEach((element, index) => {
+        element.style.opacity = '0';
+        element.style.transform = 'translateY(20px)';
+        element.style.transition = `opacity 0.6s ease ${index * 0.1}s, transform 0.6s ease ${index * 0.1}s`;
+        animateElements.observe(element);
+    });
+
+    // Animación especial para elementos grandes
+    document.querySelectorAll('.app-info-card, .final-cta-section').forEach(element => {
+        element.style.opacity = '0';
+        element.style.transform = 'translateY(30px)';
+        element.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+        animateElements.observe(element);
+    });
+
+    // Optimización para móvil - deshabilitar animaciones reversas
+    function handleResize() {
+        const isMobile = window.innerWidth <= 768;
+        const elements = document.querySelectorAll('.benefit-item, .testimonial-item, .step-item, .carousel-card, .app-info-card, .final-cta-section');
+        
+        elements.forEach(element => {
+            if (isMobile && element.classList.contains('animate-in')) {
+                // En móvil, mantener elementos visibles una vez animados
+                element.style.opacity = '1';
+                element.style.transform = 'translateY(0)';
+            }
+        });
+    }
+
+    // Ejecutar al cambiar tamaño de ventana
+    window.addEventListener('resize', handleResize);
+    handleResize(); // Ejecutar al cargar
 
     // Error handling for external links
     document.querySelectorAll('a[target="_blank"]').forEach(link => {
@@ -146,5 +228,85 @@ document.addEventListener('DOMContentLoaded', function() {
                 console.log('External link clicked:', this.href);
             }
         });
+    });
+
+    // Enhanced Typewriter Effect - Mejorado para texto multilínea
+    function typeWriter(element, text, speed = 80) {
+        // Limpiar el elemento
+        element.innerHTML = '';
+        element.style.borderRight = '3px solid #FF8C42';
+        element.style.whiteSpace = 'pre-wrap'; // Permite saltos de línea
+        element.style.wordWrap = 'break-word'; // Permite que las palabras se rompan
+        element.style.overflow = 'visible'; // Permite que el texto se expanda
+        
+        // Dividir el texto en caracteres, preservando saltos de línea
+        const characters = text.split('');
+        let i = 0;
+        
+        function type() {
+            if (i < characters.length) {
+                // Agregar el siguiente carácter
+                element.innerHTML += characters[i];
+                i++;
+                
+                // Continuar con el siguiente carácter
+                setTimeout(type, speed);
+            } else {
+                // Terminó de escribir, iniciar cursor parpadeante
+                setTimeout(() => {
+                    element.style.animation = 'blink-caret 0.75s step-end infinite';
+                    // Detener el parpadeo después de 3 segundos
+                    setTimeout(() => {
+                        element.style.borderRight = 'none';
+                        element.style.animation = 'none';
+                        // Activar otras animaciones
+                        triggerDelayedAnimations();
+                    }, 3000);
+                }, 500);
+            }
+        }
+        
+        type();
+    }
+
+    function triggerDelayedAnimations() {
+        const delayedElements = document.querySelectorAll('.fade-in-up');
+        delayedElements.forEach((element, index) => {
+            setTimeout(() => {
+                element.style.animation = 'fadeInUp 1s ease forwards';
+            }, index * 300); // Reducido el delay entre elementos
+        });
+    }
+
+    // Inicializar efecto typewriter al cargar la página
+    const typewriterElement = document.querySelector('.typewriter-text');
+    if (typewriterElement) {
+        const originalText = typewriterElement.textContent;
+        // Remover animación CSS y usar JavaScript
+        typewriterElement.style.animation = 'none';
+        typewriterElement.style.borderRight = 'none';
+        typewriterElement.style.whiteSpace = 'pre-wrap';
+        typewriterElement.style.wordWrap = 'break-word';
+        typewriterElement.style.overflow = 'visible';
+        
+        // Iniciar efecto typewriter después de un pequeño delay
+        setTimeout(() => {
+            typeWriter(typewriterElement, originalText, 70); // Velocidad ligeramente más rápida
+        }, 1000);
+    }
+
+    // Swiper unificado para ambos carousels
+    const unifiedSwiper = new Swiper('.unified-swiper', {
+        slidesPerView: 1,
+        spaceBetween: 24,
+        loop: false,
+        pagination: {
+            el: '.unified-swiper .swiper-pagination',
+            clickable: true,
+        },
+        breakpoints: {
+            700: { slidesPerView: 2 },
+            1024: { slidesPerView: 3 }
+        }
     });
 });

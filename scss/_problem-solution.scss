@@ -1,0 +1,28 @@
+// Problem Solution Section Styles - Usando componente unificado
+.problem-solution-section {
+  @extend .carousel-section;
+}
+
+.solution-cta {
+  margin-top: 3rem;
+  text-align: center;
+}
+
+.solution-cta p {
+  font-size: 1.2em;
+  margin-bottom: 1.5rem;
+  color: $text-dark;
+}
+
+// Responsive adjustments
+@media (max-width: 900px) {
+  .steps-container {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .step-item {
+    width: 100%;
+    max-width: 400px;
+  }
+} 

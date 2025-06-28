@@ -1,0 +1,21 @@
+// Variables globales minimalistas para colores, fuentes y sombras
+$primary: #FF8C42;
+$secondary: #FFFFFF;
+$text-dark: #333;
+$text-light: #555;
+$accent-bg: #F8F9FA;
+$radius: 12px;
+$shadow: 0 6px 20px rgba(255, 140, 66, 0.08);
+$font-heading: 'Poppins', sans-serif;
+$font-body: 'Inter', sans-serif;
+
+:root {
+  --primary-color: #FF8C42;
+  --secondary-color: #FFFFFF;
+  --text-dark: #333333;
+  --text-light: #555555;
+  --white: #FFFFFF;
+  --accent-bg: #F8F9FA;
+  --font-heading: 'Poppins', sans-serif;
+  --font-body: 'Inter', sans-serif;
+}

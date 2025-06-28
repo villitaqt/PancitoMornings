@@ -1,0 +1,191 @@
+// Estilos específicos de la sección de beneficios - Usando componente unificado
+.benefits-section {
+  @extend .carousel-section;
+}
+
+// Grid original para desktop
+.benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 40px;
+  margin-top: 50px;
+}
+
+// Swiper para beneficios
+.benefits-swiper {
+  margin-top: 50px;
+  padding: 20px 0;
+  
+  .swiper-slide {
+    height: auto;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .benefit-item {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(255, 140, 66, 0.08);
+    padding: 2.5rem 1.5rem 2rem 1.5rem;
+    width: 100%;
+    max-width: 340px;
+    min-width: 280px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: box-shadow 0.2s, transform 0.2s;
+    position: relative;
+    margin: 0 auto;
+    text-align: center;
+    
+    &:hover {
+      box-shadow: 0 8px 32px rgba(255, 140, 66, 0.1);
+      transform: translateY(-4px) scale(1.03);
+    }
+  }
+  
+  // Navegación
+  .swiper-button-next,
+  .swiper-button-prev {
+    color: $primary;
+    background: rgba(255, 255, 255, 0.9);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    
+    &:hover {
+      background: $primary;
+      color: white;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(255, 140, 66, 0.3);
+    }
+    
+    &::after {
+      font-size: 18px;
+      font-weight: bold;
+    }
+  }
+  
+  // Paginación
+  .swiper-pagination {
+    position: relative;
+    margin-top: 30px;
+    
+    .swiper-pagination-bullet {
+      width: 12px;
+      height: 12px;
+      background: rgba(255, 140, 66, 0.3);
+      opacity: 1;
+      transition: all 0.3s ease;
+      
+      &-active {
+        background: $primary;
+        transform: scale(1.2);
+      }
+      
+      &:hover {
+        background: $primary;
+        transform: scale(1.1);
+      }
+    }
+  }
+}
+
+// Estilos para los íconos de los beneficios
+.benefit-item .material-symbols-outlined {
+  font-size: 60px;
+  color: $primary;
+  background: rgba(255, 140, 66, 0.1);
+  border-radius: 50%;
+  padding: 0.7rem;
+  margin-bottom: 1rem;
+  display: block;
+  margin: 0 auto 20px auto;
+}
+
+.benefit-item h3 {
+  margin-bottom: 10px;
+  color: $text-dark;
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.benefit-item p {
+  font-size: 1.05rem;
+  color: $text-light;
+  line-height: 1.6;
+  margin: 0;
+}
+
+// Media queries para responsividad
+@media (max-width: 768px) {
+  .benefits-swiper {
+    .benefit-item {
+      padding: 2rem 1.2rem 1.5rem 1.2rem;
+      max-width: 320px;
+      min-width: 260px;
+    }
+    
+    .swiper-button-next,
+    .swiper-button-prev {
+      width: 45px;
+      height: 45px;
+      
+      &::after {
+        font-size: 16px;
+      }
+    }
+  }
+  
+  .benefit-item {
+    .material-symbols-outlined {
+      font-size: 50px;
+      padding: 0.6rem;
+    }
+    
+    h3 {
+      font-size: 1.2rem;
+    }
+    
+    p {
+      font-size: 1rem;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .benefits-swiper {
+    .benefit-item {
+      padding: 1.8rem 1rem 1.2rem 1rem;
+      max-width: 300px;
+      min-width: 240px;
+    }
+    
+    .swiper-button-next,
+    .swiper-button-prev {
+      width: 40px;
+      height: 40px;
+      
+      &::after {
+        font-size: 14px;
+      }
+    }
+  }
+  
+  .benefit-item {
+    .material-symbols-outlined {
+      font-size: 45px;
+      padding: 0.5rem;
+    }
+    
+    h3 {
+      font-size: 1.1rem;
+    }
+    
+    p {
+      font-size: 0.95rem;
+    }
+  }
+}

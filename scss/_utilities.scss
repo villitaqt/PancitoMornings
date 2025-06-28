@@ -1,0 +1,186 @@
+// UTILITIES & HELPERS
+// Accesibilidad, focus, helpers, animaciones, lazy-load, toast, form states
+
+*:focus { outline: 2px solid $primary; outline-offset: 2px; }
+.btn:focus { outline: 3px solid rgba(255,140,66,0.3); outline-offset: 2px; }
+button:focus, a:focus { outline: 3px solid rgba(255,140,66,0.5); }
+
+// Animaciones mejoradas para scroll
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes fadeInModal { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
+
+// Animaciones de scroll mejoradas
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+// Clases de animación
+.animate-in {
+  animation: slideInUp 0.6s ease-out forwards;
+}
+
+.animate-left {
+  animation: slideInLeft 0.6s ease-out forwards;
+}
+
+.animate-right {
+  animation: slideInRight 0.6s ease-out forwards;
+}
+
+.animate-scale {
+  animation: scaleIn 0.5s ease-out forwards;
+}
+
+// Estados iniciales para elementos animados
+section,
+.benefit-item,
+.testimonial-item,
+.step-item,
+.carousel-card,
+.app-info-card,
+.final-cta-section {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  
+  &.animate-in {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Lazy Loading
+.lazy-load {
+  opacity: 0;
+  transition: opacity 0.6s;
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  &.loaded {
+    opacity: 1;
+    background: none;
+    animation: none;
+  }
+}
+
+// Estilos para app stores deshabilitados
+.app-stores {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  margin-top: 20px;
+  flex-wrap: wrap;
+
+  &.disabled {
+    opacity: 0.6;
+    pointer-events: none;
+  }
+
+  .app-store-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+
+    img {
+      height: 50px;
+      width: auto;
+      transition: transform 0.3s ease;
+    }
+
+    .coming-soon {
+      font-size: 0.8rem;
+      color: #666;
+      font-weight: 500;
+      background: rgba(0, 0, 0, 0.1);
+      padding: 4px 8px;
+      border-radius: 12px;
+      white-space: nowrap;
+    }
+
+    &:hover {
+      transform: translateY(-2px);
+      
+      img {
+        transform: scale(1.05);
+      }
+    }
+
+    &.disabled {
+      cursor: not-allowed;
+      opacity: 0.6;
+
+      &:hover {
+        transform: none;
+        
+        img {
+          transform: none;
+        }
+      }
+
+      &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: repeating-linear-gradient(
+          45deg,
+          transparent,
+          transparent 2px,
+          rgba(255, 255, 255, 0.1) 2px,
+          rgba(255, 255, 255, 0.1) 4px
+        );
+        pointer-events: none;
+        border-radius: 8px;
+      }
+    }
+  }
+}

@@ -1,0 +1,218 @@
+// 1.0 VARIABLES & RESET
+@import 'variables';
+@import 'reset';
+@import 'utilities';
+
+// 2.0 COMPONENTS
+@import 'buttons';
+@import 'modal';
+
+// 3.0 UNIFIED CAROUSEL COMPONENT
+// Componente de Carousel Unificado - Reutilizable
+.carousel-section {
+  padding: 4rem 0;
+  background: $accent-bg;
+  text-align: center;
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  h2 {
+    margin-bottom: 1rem;
+    color: $text-dark;
+  }
+
+  .section-description {
+    font-size: 1.2em;
+    color: $text-light;
+    margin-bottom: 3rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+// Swiper unificado
+.unified-swiper {
+  margin-top: 50px;
+  padding: 20px 0;
+  
+  .swiper-slide {
+    height: auto;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .carousel-card {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(255, 140, 66, 0.08);
+    padding: 2.5rem 1.5rem 2rem 1.5rem;
+    width: 100%;
+    max-width: 340px;
+    min-width: 280px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: box-shadow 0.2s, transform 0.2s;
+    position: relative;
+    margin: 0 auto;
+    text-align: center;
+    border: 1px solid rgba(255, 140, 66, 0.1);
+    
+    &:hover {
+      box-shadow: 0 8px 32px rgba(255, 140, 66, 0.1);
+      transform: translateY(-4px) scale(1.03);
+    }
+
+    // Icono centrado (estilo de beneficios)
+    .card-icon {
+      width: 72px;
+      height: 72px;
+      background: rgba(255, 140, 66, 0.08);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.2rem;
+      font-size: 2.5rem;
+      
+      .material-symbols-outlined {
+        font-size: 2.5rem;
+        color: $primary;
+      }
+    }
+
+    // Número de paso (solo para pasos)
+    .step-number {
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: rgba(51, 51, 51, 0.1);
+      margin-bottom: 0.5rem;
+      letter-spacing: 2px;
+    }
+
+    // Título
+    h3 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: $text-dark;
+      margin-bottom: 0.7rem;
+    }
+
+    // Descripción
+    p {
+      color: $text-light;
+      font-size: 1.05rem;
+      line-height: 1.6;
+      margin: 0;
+    }
+  }
+  
+  // Paginación (sin flechas)
+  .swiper-pagination {
+    position: relative;
+    margin-top: 30px;
+    
+    .swiper-pagination-bullet {
+      width: 12px;
+      height: 12px;
+      background: rgba(255, 140, 66, 0.3);
+      opacity: 1;
+      transition: all 0.3s ease;
+      
+      &-active {
+        background: $primary;
+        transform: scale(1.2);
+      }
+      
+      &:hover {
+        background: $primary;
+        transform: scale(1.1);
+      }
+    }
+  }
+}
+
+// Media queries para responsividad del carousel
+@media (max-width: 768px) {
+  .unified-swiper {
+    .carousel-card {
+      padding: 2rem 1.2rem 1.5rem 1.2rem;
+      max-width: 320px;
+      min-width: 260px;
+    }
+    
+    .card-icon {
+      width: 60px;
+      height: 60px;
+      
+      .material-symbols-outlined {
+        font-size: 2rem;
+      }
+    }
+    
+    .step-number {
+      font-size: 1.8rem;
+    }
+    
+    h3 {
+      font-size: 1.2rem;
+    }
+    
+    p {
+      font-size: 1rem;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .unified-swiper {
+    .carousel-card {
+      padding: 1.8rem 1rem 1.2rem 1rem;
+      max-width: 300px;
+      min-width: 240px;
+    }
+    
+    .card-icon {
+      width: 55px;
+      height: 55px;
+      
+      .material-symbols-outlined {
+        font-size: 1.8rem;
+      }
+    }
+    
+    .step-number {
+      font-size: 1.6rem;
+    }
+    
+    h3 {
+      font-size: 1.1rem;
+    }
+    
+    p {
+      font-size: 0.95rem;
+    }
+  }
+}
+
+// 4.0 LAYOUT
+@import 'header';
+@import 'footer';
+
+// 5.0 PAGE SECTIONS
+@import 'hero';
+@import 'problem-solution';
+@import 'cards';
+@import 'benefits';
+@import 'testimonials';
+@import 'app-visuals';
+
+// 6.0 MEDIA QUERIES
+@import 'mediaqueries';
+
+// Agrega aquí otros módulos como _hero.scss, etc.

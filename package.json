@@ -1,0 +1,23 @@
+{
+  "name": "pancito-mornings-landing",
+  "version": "1.0.0",
+  "description": "Landing page optimizada para Pancito Mornings con SCSS modular",
+  "main": "index.html",
+  "scripts": {
+    "build": "sass scss/main.scss main.css --style compressed",
+    "dev": "sass scss/main.scss main.css --watch",
+    "build:expanded": "sass scss/main.scss main.css --style expanded",
+    "clean": "rm -f main.css main.css.map"
+  },
+  "keywords": [
+    "landing-page",
+    "scss",
+    "responsive",
+    "pancito-mornings"
+  ],
+  "author": "Pancito Mornings Team",
+  "license": "MIT",
+  "devDependencies": {
+    "sass": "^1.89.2"
+  }
+} 

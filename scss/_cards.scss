@@ -1,0 +1,55 @@
+// Estilos de tarjetas (beneficios, testimonios, screenshots)
+.card, .benefit-item, .testimonial-item, .app-screenshot-item {
+  background: $secondary;
+  border-radius: $radius;
+  box-shadow: $shadow;
+  padding: 1.5rem;
+  border: 1px solid rgba(255, 140, 66, 0.1);
+  transition: box-shadow 0.2s, transform 0.2s;
+  &:hover {
+    box-shadow: 0 10px 25px rgba(255, 140, 66, 0.15);
+    transform: translateY(-4px);
+  }
+}
+
+.benefit-item,
+.testimonial-item,
+.app-screenshot-item {
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(255, 140, 66, 0.08);
+  padding: 24px;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 140, 66, 0.1);
+}
+.benefit-item:hover,
+.testimonial-item:hover,
+.app-screenshot-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(255, 140, 66, 0.15);
+}
+.benefit-item .material-symbols-outlined {
+  font-size: 42px;
+  color: #FF8C42;
+  background-color: rgba(255, 140, 66, 0.1);
+  padding: 14px;
+  border-radius: 50%;
+  margin-bottom: 16px;
+  display: inline-flex;
+}
+.testimonial-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+}
+.testimonial-item img {
+  border: 3px solid rgba(255, 140, 66, 0.2);
+}
+.app-screenshot-item p {
+  margin-top: 16px;
+  font-weight: 500;
+  color: #555;
+  text-align: center;
+}
+
+// ...agrega aquí el resto de estilos de tarjetas...
