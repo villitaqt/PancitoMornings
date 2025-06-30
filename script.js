@@ -309,4 +309,162 @@ document.addEventListener('DOMContentLoaded', function() {
             1024: { slidesPerView: 3 }
         }
     });
+
+    // =============================================================================
+    // App Visuals Section - Contenido dinámico por slide
+    // =============================================================================
+    
+    // Datos de contenido para cada slide
+    const appVisualsContent = [
+        {
+            title: "Tu Mañana, Simplificada: El Dashboard",
+            subtitle: "Tu centro de control diario",
+            description: "Visualiza tu rutina de desayunos programados y mantén todo bajo control.",
+            features: [
+                "Visión clara de tu próxima entrega y la semana completa",
+                "Monitorea tu plan actual y el saldo pendiente semanal",
+                "Acceso rápido para modificar tus desayunos diarios"
+            ]
+        },
+        {
+            title: "Historial al Alcance: Vista de Calendario",
+            subtitle: "Revisa tu actividad de desayunos programados",
+            description: "Consulta tus rutinas pasadas de forma visual y organizada.",
+            features: [
+                "Calendario interactivo con días de entrega resaltados",
+                "Detalle de tus desayunos y horarios por día",
+                "Consulta tus rutinas pasadas de forma visual y organizada"
+            ]
+        },
+        {
+            title: "Tu Plan Ideal: Gestión de Suscripciones",
+            subtitle: "Encuentra y gestiona el plan perfecto",
+            description: "Elige entre planes Flexible, Sorpresa o Dieta Específica.",
+            features: [
+                "Detalles claros de tu suscripción actual",
+                "Elige entre planes Flexible, Sorpresa o Dieta Específica",
+                "Opciones sencillas para pausar o cancelar tu servicio"
+            ]
+        },
+        {
+            title: "Control Total: Resumen de Cobro Semanal",
+            subtitle: "Transparencia absoluta en tus gastos",
+            description: "Conoce la fecha exacta de tu próximo cobro.",
+            features: [
+                "Visualiza el saldo pendiente de tu semana actual",
+                "Conoce la fecha exacta de tu próximo cobro",
+                "Accede a un desglose detallado de tus consumos"
+            ]
+        },
+        {
+            title: "Explora y Elige: Nuestro Exclusivo Catálogo",
+            subtitle: "Descubre la variedad y calidad",
+            description: "Personaliza cada desayuno a tu gusto.",
+            features: [
+                "Navega por categorías como Clásicos, Completos o Saludables",
+                "Personaliza cada desayuno a tu gusto",
+                "Añade fácilmente tus favoritos a tu rutina semanal"
+            ]
+        }
+    ];
+
+    // Inicializar Swiper para el teléfono
+    const phoneSwiper = new Swiper('.phone-swiper', {
+        slidesPerView: 1,
+        spaceBetween: 0,
+        loop: false,
+        allowTouchMove: false, // Deshabilitar swipe en el teléfono
+        effect: 'fade',
+        fadeEffect: {
+            crossFade: true
+        }
+    });
+
+    // Elementos de la interfaz
+    const cardTitle = document.querySelector('.app-info-card .card-header h2');
+    const cardSubtitle = document.querySelector('.app-info-card .card-content h3');
+    const cardDescription = document.querySelector('.app-info-card .card-content > p');
+    const featureItems = document.querySelectorAll('.app-info-card .feature-item span:last-child');
+    const progressDots = document.querySelectorAll('.progress-dot');
+    const prevBtn = document.querySelector('.progress-prev');
+    const nextBtn = document.querySelector('.progress-next');
+
+    // Función para actualizar contenido
+    function updateContent(slideIndex) {
+        const content = appVisualsContent[slideIndex];
+        
+        // Actualizar texto con animación suave
+        if (cardTitle) {
+            cardTitle.style.opacity = '0';
+            setTimeout(() => {
+                cardTitle.textContent = content.title;
+                cardTitle.style.opacity = '1';
+            }, 200);
+        }
+        
+        if (cardSubtitle) {
+            cardSubtitle.style.opacity = '0';
+            setTimeout(() => {
+                cardSubtitle.textContent = content.subtitle;
+                cardSubtitle.style.opacity = '1';
+            }, 300);
+        }
+        
+        if (cardDescription) {
+            cardDescription.style.opacity = '0';
+            setTimeout(() => {
+                cardDescription.textContent = content.description;
+                cardDescription.style.opacity = '1';
+            }, 400);
+        }
+
+        // Actualizar features con animación escalonada
+        featureItems.forEach((item, index) => {
+            setTimeout(() => {
+                item.style.opacity = '0';
+                setTimeout(() => {
+                    item.textContent = content.features[index];
+                    item.style.opacity = '1';
+                }, 150);
+            }, 500 + (index * 100));
+        });
+
+        // Actualizar indicadores de progreso
+        progressDots.forEach((dot, index) => {
+            dot.classList.remove('current');
+            if (index === slideIndex) {
+                dot.classList.add('current');
+            }
+        });
+    }
+
+    // Event listeners para los botones de progreso
+    if (prevBtn && nextBtn) {
+        prevBtn.addEventListener('click', () => {
+            const currentIndex = phoneSwiper.activeIndex;
+            const newIndex = currentIndex > 0 ? currentIndex - 1 : appVisualsContent.length - 1;
+            phoneSwiper.slideTo(newIndex);
+        });
+
+        nextBtn.addEventListener('click', () => {
+            const currentIndex = phoneSwiper.activeIndex;
+            const newIndex = currentIndex < appVisualsContent.length - 1 ? currentIndex + 1 : 0;
+            phoneSwiper.slideTo(newIndex);
+        });
+    }
+
+    // Event listeners para los dots de progreso
+    progressDots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+            phoneSwiper.slideTo(index);
+        });
+    });
+
+    // Event listener para cambios de slide
+    phoneSwiper.on('slideChange', function () {
+        updateContent(phoneSwiper.activeIndex);
+    });
+
+    // Inicializar con el primer slide
+    updateContent(0);
 });

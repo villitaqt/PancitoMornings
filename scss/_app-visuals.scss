@@ -3,7 +3,7 @@
 // =============================================================================
 
 .app-visuals-section {
-  background: linear-gradient(135deg, #2c5530 0%, #1a3d1f 100%);
+  background: linear-gradient(135deg, #FF8C42 0%, #D2691E 25%, #8B4513 50%, #F5DEB3 75%, #FFFFFF 100%);
   padding: 80px 0;
   color: white;
   min-height: 100vh;
@@ -89,6 +89,7 @@
     color: rgba(255,255,255,0.9);
     line-height: 1.4;
     font-weight: 400;
+    transition: opacity 0.3s ease;
   }
   
   .card-content h3 {
@@ -96,12 +97,14 @@
     margin-bottom: 10px;
     color: white;
     font-weight: 600;
+    transition: opacity 0.3s ease;
   }
   
   .card-content > p {
     color: rgba(255,255,255,0.7);
     margin-bottom: 25px;
     font-size: 1em;
+    transition: opacity 0.3s ease;
   }
 }
 
@@ -130,6 +133,10 @@
     
     &.active .dot {
       background: #4CAF50;
+    }
+    
+    span:last-child {
+      transition: opacity 0.3s ease;
     }
   }
 }
@@ -316,6 +323,10 @@
 @media (max-width: 768px) {
   .app-visuals-section {
     padding: 50px 0;
+    
+    .app-showcase {
+      gap: 30px;
+    }
   }
   
   .phone-mockup .phone-frame {
@@ -340,6 +351,11 @@
     .card-content h3 {
       font-size: 1.3em;
     }
+    
+    .feature-list .feature-item {
+      font-size: 0.9em;
+      margin-bottom: 10px;
+    }
   }
   
   .progress-indicator {
@@ -363,6 +379,10 @@
 @media (max-width: 480px) {
   .app-visuals-section {
     padding: 40px 0;
+    
+    .app-showcase {
+      gap: 25px;
+    }
   }
   
   .phone-mockup .phone-frame {
@@ -375,14 +395,31 @@
     
     .card-header h2 {
       font-size: 1.2em;
+      margin-bottom: 15px;
     }
     
     .card-content h3 {
-      font-size: 1.2em;
+      font-size: 1.1em;
+      margin-bottom: 8px;
     }
     
-    .feature-list .feature-item {
+    .card-content > p {
       font-size: 0.9em;
+      margin-bottom: 20px;
+    }
+    
+    .feature-list {
+      margin-bottom: 25px;
+      
+      .feature-item {
+        font-size: 0.85em;
+        margin-bottom: 8px;
+        
+        .dot {
+          width: 6px;
+          height: 6px;
+        }
+      }
     }
   }
   
