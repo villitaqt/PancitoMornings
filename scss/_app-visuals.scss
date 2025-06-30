@@ -131,6 +131,14 @@
       flex-shrink: 0;
     }
     
+    .feature-icon {
+      font-size: 1.3em;
+      color: #FF8C42;
+      vertical-align: middle;
+      transition: opacity 0.3s ease;
+      flex-shrink: 0;
+    }
+    
     &.active .dot {
       background: #4CAF50;
     }

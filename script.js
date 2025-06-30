@@ -384,14 +384,24 @@ document.addEventListener('DOMContentLoaded', function() {
     const cardTitle = document.querySelector('.app-info-card .card-header h2');
     const cardSubtitle = document.querySelector('.app-info-card .card-content h3');
     const cardDescription = document.querySelector('.app-info-card .card-content > p');
-    const featureItems = document.querySelectorAll('.app-info-card .feature-item span:last-child');
+    const featureItems = document.querySelectorAll('.app-info-card .feature-item');
     const progressDots = document.querySelectorAll('.progress-dot');
     const prevBtn = document.querySelector('.progress-prev');
     const nextBtn = document.querySelector('.progress-next');
 
+    // Iconos para cada slide
+    const appVisualsIcons = [
+        ["event_available", "monitor_heart", "edit_calendar"],
+        ["calendar_month", "schedule", "history"],
+        ["assignment", "tune", "pause_circle"],
+        ["account_balance_wallet", "event_note", "receipt_long"],
+        ["category", "restaurant_menu", "favorite"]
+    ];
+
     // Función para actualizar contenido
     function updateContent(slideIndex) {
         const content = appVisualsContent[slideIndex];
+        const icons = appVisualsIcons[slideIndex];
         
         // Actualizar texto con animación suave
         if (cardTitle) {
@@ -420,11 +430,24 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Actualizar features con animación escalonada
         featureItems.forEach((item, index) => {
+            const iconEl = item.querySelector('.feature-icon');
+            const textEl = item.querySelector('span:last-child');
             setTimeout(() => {
-                item.style.opacity = '0';
+                if (iconEl) {
+                    iconEl.style.opacity = '0';
+                }
+                if (textEl) {
+                    textEl.style.opacity = '0';
+                }
                 setTimeout(() => {
-                    item.textContent = content.features[index];
-                    item.style.opacity = '1';
+                    if (iconEl) {
+                        iconEl.textContent = icons[index];
+                        iconEl.style.opacity = '1';
+                    }
+                    if (textEl) {
+                        textEl.textContent = content.features[index];
+                        textEl.style.opacity = '1';
+                    }
                 }, 150);
             }, 500 + (index * 100));
         });
