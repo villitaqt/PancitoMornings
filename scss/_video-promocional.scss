@@ -1,0 +1,142 @@
+// =============================================================================
+// Video Promocional Section - Sección de video promocional
+// =============================================================================
+
+.video-promocional-section {
+  padding: 80px 0;
+  text-align: center;
+  background: linear-gradient(135deg, #FFF8F0 0%, #F8F9FA 100%);
+  
+  h2 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    color: $text-dark;
+    font-weight: 600;
+  }
+  
+  .section-description {
+    font-size: 1.1em;
+    color: $text-light;
+    margin-bottom: 50px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6;
+  }
+}
+
+// =============================================================================
+// Contenedor del video
+// =============================================================================
+
+.video-container {
+  position: relative;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  padding-bottom: 56.25%; // Aspect ratio 16:9
+  height: 0;
+  overflow: hidden;
+  border-radius: 20px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+  background: #000;
+  
+  iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: 20px;
+  }
+  
+  // Overlay sutil para mejorar la integración visual
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, rgba(255, 140, 66, 0.05), transparent);
+    border-radius: 20px;
+    pointer-events: none;
+    z-index: 1;
+  }
+}
+
+// =============================================================================
+// Responsive Design
+// =============================================================================
+
+@media (max-width: 1200px) {
+  .video-container {
+    max-width: 700px;
+  }
+}
+
+@media (max-width: 992px) {
+  .video-promocional-section {
+    padding: 60px 0;
+    
+    h2 {
+      font-size: 2.2em;
+    }
+  }
+  
+  .video-container {
+    max-width: 600px;
+  }
+}
+
+@media (max-width: 768px) {
+  .video-promocional-section {
+    padding: 50px 0;
+    
+    h2 {
+      font-size: 2em;
+      margin-bottom: 15px;
+    }
+    
+    .section-description {
+      font-size: 1em;
+      margin-bottom: 40px;
+    }
+  }
+  
+  .video-container {
+    max-width: 100%;
+    border-radius: 15px;
+    
+    iframe {
+      border-radius: 15px;
+    }
+    
+    &::before {
+      border-radius: 15px;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .video-promocional-section {
+    padding: 40px 0;
+    
+    h2 {
+      font-size: 1.8em;
+    }
+  }
+  
+  .video-container {
+    border-radius: 12px;
+    
+    iframe {
+      border-radius: 12px;
+    }
+    
+    &::before {
+      border-radius: 12px;
+    }
+  }
+} 
